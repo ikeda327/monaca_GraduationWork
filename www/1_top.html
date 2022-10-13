@@ -1,0 +1,64 @@
+<ons-page id="first-page">
+
+    <ons-carousel swipeable fullscreen auto-scroll overscrollable initial-index="1" id="carousel">
+        <ons-carousel-item>
+            <ons-toolbar>
+                <div class="center">ペイント</div>
+                <div class="right">ホーム</div>
+            </ons-toolbar>
+            <div>
+                <div class="paint-canvas">
+                    <canvas id="canvas"></canvas>
+                </div>
+
+                <div class="btn">
+                    <ons-button id="pen-button">ペン</ons-button>
+                    <ons-button id="eraser-button">消しゴム</ons-button>
+                    <ons-button id="clear-button">全消去</ons-button>
+                </div>
+                <div class="btn_fin">
+                    <ons-button id="btn_finish">完成</ons-button>
+                </div>
+            </div>
+        </ons-carousel-item>
+
+        <ons-carousel-item>
+            <ons-toolbar>
+                <div class="left">ペイント</div>
+                <div class="center"> ホーム</div>
+                <div class="right">共有</div>
+            </ons-toolbar>
+            <div class="content" style="text-align: center; font-size: 90px; margin-top: 50px; ">
+                <p>B.Printer</p>
+                <ons-button id="push-button" onclick="document.querySelector( '#navigator').pushPage( '2_detail.html') ">アプリの説明</ons-button>
+            </div>
+        </ons-carousel-item>
+
+        <ons-carousel-item>
+            <ons-toolbar>
+                <div class="left">ホーム</div>
+                <div class="center">選択</div>
+            </ons-toolbar>
+
+            <div class="wrapper">
+                <!-- カラー -->
+                <p id="photo" />
+            </div>
+            <div class="wrapper">
+                <!-- 白黒 -->
+                <canvas id="canvas2"></canvas>
+            </div>
+
+            <ons-tabbar position="bottom">
+                <div class="tabbar">
+                    <img src="images/search.png" />
+                    <img src="images/heart.png" />
+                    <img src="images/camera.png" id="camera" onclick="snapPicture('camera')" />
+                    <img src="images/folda.png" id="galary" onclick="snapPicture('galary')" />
+                </div>
+            </ons-tabbar>
+            <script>
+            </script>
+        </ons-carousel-item>
+    </ons-carousel>
+</ons-page>

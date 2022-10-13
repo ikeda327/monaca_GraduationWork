@@ -1,0 +1,59 @@
+/* ペイント */
+.paint-canvas {
+    margin: 0 auto;
+    width: 350px;
+    height: 350px;
+}
+
+canvas {
+    margin: 5em 0;
+    border: 2px solid gray;
+    background-color: #fff;
+}
+
+.btn {
+    width: 70%;
+    margin: 8em auto 0 auto;
+    display: flex;
+    justify-content: space-between;
+}
+
+.btn_fin {
+    width: 35%;
+    margin: 1.5em auto 0 auto;
+}
+
+#btn_finish {
+    width: 100%;
+    text-align: center;
+}
+
+/* 選択 */
+.wrapper {
+    width: 70%;
+    margin: 0 auto;
+    text-align: center;
+    overflow: hidden;
+}
+
+#photo {
+    width: 100%;
+}
+
+#canvas2 {
+    width: 100%;
+}
+
+.tabbar {
+    display: flex;
+    justify-content: space-around;
+}
+
+.tabbar img {
+    margin: 3px;
+}
+
+
+
+
+
