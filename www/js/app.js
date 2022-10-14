@@ -269,12 +269,12 @@ function snapPicture(mode) {
             dst.width = 350
             dst.height = 350
 
-            // image.onload = () => {
+            image.onload = () => {
                 ip = new ImageProc(dst, image)
-            // }
+            }
 
-            // ip.drawOriginal()    元画像を表示する
-            ip.convert() //モノクローム画像に変換する
+            ip.drawOriginal()    // 元画像を表示する
+            // ip.convert() //モノクローム画像に変換する
             // ip.threshold = 200   しきい値を200とする
             // ip.threshold = ip.calcThreshold()    計算したしきい値を指定する
         // }
