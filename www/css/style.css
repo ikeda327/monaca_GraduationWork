@@ -40,8 +40,11 @@ canvas {
     width: 100%;
 }
 
-#canvas2 {
-    width: 100%;
+#dst,
+#src {
+    border: solid 1px gray;
+    display: block;
+    margin: 50px auto;
 }
 
 .tabbar {
@@ -52,8 +55,3 @@ canvas {
 .tabbar img {
     margin: 3px;
 }
-
-
-
-
-

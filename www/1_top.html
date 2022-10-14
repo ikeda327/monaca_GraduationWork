@@ -30,7 +30,8 @@
             </ons-toolbar>
             <div class="content" style="text-align: center; font-size: 90px; margin-top: 50px; ">
                 <p>B.Printer</p>
-                <ons-button id="push-button" onclick="document.querySelector( '#navigator').pushPage( '2_detail.html') ">アプリの説明</ons-button>
+                <ons-button id="push-button"
+                    onclick="document.querySelector( '#navigator').pushPage( '2_detail.html') ">アプリの説明</ons-button>
             </div>
         </ons-carousel-item>
 
@@ -46,7 +47,7 @@
             </div>
             <div class="wrapper">
                 <!-- 白黒 -->
-                <canvas id="canvas2"></canvas>
+                <canvas id="dst"></canvas>
             </div>
 
             <ons-tabbar position="bottom">
@@ -57,8 +58,6 @@
                     <img src="images/folda.png" id="galary" onclick="snapPicture('galary')" />
                 </div>
             </ons-tabbar>
-            <script>
-            </script>
         </ons-carousel-item>
     </ons-carousel>
 </ons-page>
