@@ -264,7 +264,7 @@ function snapPicture(mode) {
 
         const image = new Image()
         var ip
-        window.onload = () => {
+        // window.onload = () => {
             let dst = document.getElementById("dst")
             dst.width = 350
             dst.height = 350
@@ -277,7 +277,7 @@ function snapPicture(mode) {
             ip.convert() //モノクローム画像に変換する
             // ip.threshold = 200   しきい値を200とする
             // ip.threshold = ip.calcThreshold()    計算したしきい値を指定する
-        }
+        // }
     }
 
     function cameraError(message) {
