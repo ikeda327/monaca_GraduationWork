@@ -264,6 +264,7 @@ function snapPicture(mode) {
     
 
         const image = new Image()
+        image.src = img.src
         var ip
         // window.onload = () => {
             let dst = document.getElementById("dst")
@@ -271,12 +272,12 @@ function snapPicture(mode) {
             dst.height = 350
 
             image.onload = () => {
-                image.src = img.src
                 ip = new ImageProc(dst, image)
+                ip.convert()
             }
 
             // ip.drawOriginal()    元画像を表示する
-            ip.convert() //モノクローム画像に変換する
+            // ip.convert() //モノクローム画像に変換する
             // ip.threshold = 200   しきい値を200とする
             // ip.threshold = ip.calcThreshold()    計算したしきい値を指定する
         // }  
