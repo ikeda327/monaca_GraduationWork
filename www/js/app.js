@@ -264,7 +264,6 @@ function snapPicture(mode) {
     
 
         const image = new Image()
-        image.src = img.src
         var ip
         // window.onload = () => {
             let dst = document.getElementById("dst")
@@ -272,6 +271,7 @@ function snapPicture(mode) {
             dst.height = 350
 
             image.onload = () => {
+                image.src = img.src
                 ip = new ImageProc(dst, image)
             }
 
