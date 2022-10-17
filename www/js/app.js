@@ -51,13 +51,13 @@ window.onload = function () {
     // ペン
     $("#pen-button").on("click ", function () {
         context.strokeStyle = "#000 ";
-        context.lineWidth = "1 "
+        context.lineWidth = "7 "
     });
 
     // 消しゴム
     $("#eraser-button").on("click ", function () {
         context.strokeStyle = "#fff ";
-        context.lineWidth = "5 "
+        context.lineWidth = "12";
     });
 
     // 全消去
@@ -234,59 +234,5 @@ class ImageProc {
 }
 
 
-// 選択ページ
-// カメラ・ギャラリー
-function snapPicture(mode) {
-    var options;
-
-    if (mode == "camera") {
-        options = {
-            // 標準のカメラを起動
-            sourceType: Camera.PictureSourceType.CAMERA,
-            // データの形式
-            destinationType: Camera.DestinationType.DATA_URL
-        }
-    } else if (mode == "galary") {
-        options = {
-            // ライブラリを起動
-            sourceType: Camera.PictureSourceType.PHOTOLIBRARY,
-            destinationType: Camera.DestinationType.DATA_URL
-        }
-    }
-
-    // カメラ起動
-    navigator.camera.getPicture(cameraSuccess, cameraError, options);
-
-    function cameraSuccess(imageData) {
-        // 撮影、選択した画像を画面に表示
-        var img = document.querySelector("#photo");
-        img.src = "data:image/jpeg;base64," + imageData;
-    
-
-        const image = new Image()
-        image.src = img.src
-        var ip
-        // window.onload = () => {
-            let dst = document.getElementById("dst")
-            dst.width = 350
-            dst.height = 350
-
-            image.onload = () => {
-                ip = new ImageProc(dst, image)
-                ip.convert()
-            }
-
-            // ip.drawOriginal()    元画像を表示する
-            // ip.convert() //モノクローム画像に変換する
-            // ip.threshold = 200   しきい値を200とする
-            // ip.threshold = ip.calcThreshold()    計算したしきい値を指定する
-        // }  
-    }
-
-    function cameraError(message) {
-        console.log(message)
-    }
 
 
-
-}

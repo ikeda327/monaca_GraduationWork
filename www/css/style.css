@@ -6,14 +6,14 @@
 }
 
 canvas {
-    margin: 5em 0;
+    margin: 1em 0;
     border: 2px solid gray;
     background-color: #fff;
 }
 
 .btn {
     width: 70%;
-    margin: 8em auto 0 auto;
+    margin: 0 auto;
     display: flex;
     justify-content: space-between;
 }
@@ -30,28 +30,68 @@ canvas {
 
 /* 選択 */
 .wrapper {
-    width: 70%;
-    margin: 0 auto;
     text-align: center;
-    overflow: hidden;
 }
 
 #photo {
-    width: 100%;
+    width: 90px;
+    height: 90px;
+}
+
+.slide {
+    text-align: center;
+}
+
+.reload {
+    margin-left: 2em;
 }
 
 #dst,
 #src {
     border: solid 1px gray;
     display: block;
-    margin: 50px auto;
+    margin: 10px auto;
 }
 
 .tabbar {
+    height: 50px;
     display: flex;
-    justify-content: space-around;
+    justify-content: center;
 }
 
 .tabbar img {
-    margin: 3px;
+    margin: 3px 2em;
+}
+
+* {
+  box-sizing: border-box;
+  padding: 0;
+}
+ul {
+  list-style-type: none;
+}
+.tab-area {
+    margin-top: 100px;
+  display: flex;
+  border: 2px solid;
+  cursor: pointer;/* カーソルポインターに */
+}
+.tab {
+  width: calc(100%/3);
+  padding: 5px;
+  text-align: center;
+}
+.tab:nth-child(n+2) {
+  border-left: 2px solid;
+}
+.tab.active {
+  background-color: #000;
+  color: #fff;
+}
+.panel {
+  display: none;
+  text-align: center;
+}
+.panel.active {
+  display: block;
 }
