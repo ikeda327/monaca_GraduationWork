@@ -42,6 +42,19 @@ canvas {
     text-align: center;
 }
 
+.slider {
+    -webkit-appearance: none;
+    appearance: none;
+    cursor: pointer;
+    background: #8acdff;
+    height: 14px;
+    width: 100%;
+    border-radius: 10px;
+    border: solid 3px #dff1ff;
+    outline: 0;
+    box-shadow: 0 0 3px rgb(0, 161, 255);
+}
+
 .reload {
     margin-left: 2em;
 }
