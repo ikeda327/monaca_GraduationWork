@@ -1,0 +1,5 @@
+cordova.plugins.diagnostic.registerBluetoothStateChangeHandler(function(state){
+   if(state === cordova.plugins.diagnostic.bluetoothState.POWERED_ON){
+     console.log("Bluetoothに接続できます");
+   }
+});
