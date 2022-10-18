@@ -35,15 +35,19 @@
                 <img id="photo" />
             </div>
 
-            <div class="wrapper">
+            <div class="wrapper2">
                 <canvas id="dst"></canvas>
             </div>
 
             <div class="slide">
-                <input type="range" id="input" class="slider" value="" min="0" max="255" step="1">
+                <input type="range" id="input" class="slider" value="" min="0" max="255" step="5">
                 <label class="value">0</label>
                 <ons-button class="reload" id="reload_btn">自動</ons-button>
             </div>
+
+            <div class="btn_fin2">
+                    <ons-button id="btn_finish">完成</ons-button>
+                </div>
 
             <div class="tabbar">
                 <!-- <img src="images/search.png" />
@@ -64,6 +68,10 @@
                     var index = $('.tab').index(this);
                     $('.panel').eq(index).addClass('active');
                 });
+
+                $('#btn_finish').on('click', function() {
+
+                })
             });
 
             // 選択ページ
@@ -100,8 +108,8 @@
                     var ip
                     // window.onload = () => {
                     let dst = document.getElementById("dst")
-                    dst.width = 350
-                    dst.height = 350
+                    dst.width = 300
+                    dst.height = 300
 
                     image.onload = () => {
                         ip = new ImageProc(dst, image)

@@ -1,19 +1,59 @@
+/* 上部メニュー */
+* {
+  box-sizing: border-box;
+  padding: 0;
+}
+
+ul {
+  list-style-type: none;
+}
+
+.tab-area {
+    display: flex;
+    border: 2px solid;
+    cursor: pointer;
+    line-height: 2em;
+}
+
+.tab {
+  width: calc(100%/3);
+  padding: 5px;
+  text-align: center;
+}
+
+.tab:nth-child(n+2) {
+  border-left: 2px solid;
+}
+
+.tab.active {
+  background-color: #000;
+  color: #fff;
+}
+
+.panel {
+  display: none;
+  text-align: center;
+}
+
+.panel.active {
+  display: block;
+}
+
 /* ペイント */
 .paint-canvas {
-    margin: 0 auto;
+    margin: 2em auto;
     width: 350px;
     height: 350px;
 }
 
 canvas {
-    margin: 1em 0;
     border: 2px solid gray;
     background-color: #fff;
 }
 
 .btn {
     width: 70%;
-    margin: 0 auto;
+    margin: 2em auto 0 auto;
     display: flex;
     justify-content: space-between;
 }
@@ -47,30 +87,12 @@ canvas {
     appearance: none;
     cursor: pointer;
     background: #8acdff;
-    height: 14px;
+    height: 16px;
     border-radius: 10px;
-    border: solid 3px #dff1ff;
+    border: solid 2px #dff1ff;
     outline: 0;
     box-shadow: 0 0 7px rgb(0, 161, 255);
 }
-
-:-webkit-slider-thumb {
-    -webkit-appearance: none;
-    background: #53aeff;
-    width: 34px;
-    height: 34px;
-    border-radius: 50%;
-    box-shadow: 0px 3px 6px 0px rgba(0, 0, 0, 0.15);
-  }
-  
-  ::-moz-range-thumb {
-    background: #53aeff;
-    width: 34px;
-    height: 34px;
-    border-radius: 50%;
-    box-shadow: 0px 3px 6px 0px rgba(0, 0, 0, 0.15);
-    border: none;
-  }
 
 .reload {
     margin-left: 2em;
@@ -80,7 +102,12 @@ canvas {
 #src {
     border: solid 1px gray;
     display: block;
-    margin: 10px auto;
+    margin: 5px auto;
+}
+
+.btn_fin2 {
+    width: 35%;
+    margin: .5em auto 0 auto;
 }
 
 .tabbar {
@@ -91,38 +118,4 @@ canvas {
 
 .tabbar img {
     margin: 3px 2em;
-}
-
-* {
-  box-sizing: border-box;
-  padding: 0;
-}
-
-ul {
-  list-style-type: none;
-}
-.tab-area {
-    margin-top: 1em;
-    display: flex;
-    border: 2px solid;
-    cursor: pointer;
-}
-.tab {
-  width: calc(100%/3);
-  padding: 5px;
-  text-align: center;
-}
-.tab:nth-child(n+2) {
-  border-left: 2px solid;
-}
-.tab.active {
-  background-color: #000;
-  color: #fff;
-}
-.panel {
-  display: none;
-  text-align: center;
-}
-.panel.active {
-  display: block;
 }

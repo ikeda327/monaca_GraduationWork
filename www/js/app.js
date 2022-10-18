@@ -30,6 +30,7 @@ window.onload = function () {
         var endX = point.x;
         var endY = point.y;
         // 直線を描画
+        context.lineWidth = "5"
         context.beginPath();
         context.moveTo(startX, startY);
         context.lineTo(endX, endY);
@@ -50,14 +51,14 @@ window.onload = function () {
 
     // ペン
     $("#pen-button").on("click ", function () {
-        context.strokeStyle = "#000 ";
-        context.lineWidth = "7 "
+        context.strokeStyle = "#000";
+        context.lineWidth = "5"
     });
 
     // 消しゴム
     $("#eraser-button").on("click ", function () {
-        context.strokeStyle = "#fff ";
-        context.lineWidth = "12";
+        context.strokeStyle = "#fff";
+        context.lineWidth = "10";
     });
 
     // 全消去
@@ -105,8 +106,8 @@ class ImageProc {
         let is = {
             x: 0,
             y: 0,
-            width: image.width,
-            height: image.height
+            width: canvas.width,
+            height: canvas.height
         }
         this.#resize(is, canvas.width)
 
