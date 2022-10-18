@@ -46,8 +46,8 @@
             </div>
 
             <div class="btn_fin2">
-                    <ons-button id="btn_finish">完成</ons-button>
-                </div>
+                <ons-button id="btn_finish">完成</ons-button>
+            </div>
 
             <div class="tabbar">
                 <!-- <img src="images/search.png" />
@@ -61,92 +61,119 @@
 
     <script>
         // window.onload = function () {
-            $(function () {
-                $('.tab').on('click', function () {
-                    $('.tab, .panel').removeClass('active');
-                    $(this).addClass('active');
-                    var index = $('.tab').index(this);
-                    $('.panel').eq(index).addClass('active');
-                });
-
-                $('#btn_finish').on('click', function() {
-
-                })
+        $(function () {
+            $('.tab').on('click', function () {
+                $('.tab, .panel').removeClass('active');
+                $(this).addClass('active');
+                var index = $('.tab').index(this);
+                $('.panel').eq(index).addClass('active');
             });
+        });
 
-            // 選択ページ
-            // カメラ・ギャラリー
-            function snapPicture(mode) {
-                var options;
+        // 選択ページ
+        // カメラ・ギャラリー
+        function snapPicture(mode) {
+            var options;
 
-                if (mode == "camera") {
-                    options = {
-                        // 標準のカメラを起動
-                        sourceType: Camera.PictureSourceType.CAMERA,
-                        // データの形式
-                        destinationType: Camera.DestinationType.DATA_URL
-                    }
-                } else if (mode == "galary") {
-                    options = {
-                        // ライブラリを起動
-                        sourceType: Camera.PictureSourceType.PHOTOLIBRARY,
-                        destinationType: Camera.DestinationType.DATA_URL
-                    }
+            if (mode == "camera") {
+                options = {
+                    // 標準のカメラを起動
+                    sourceType: Camera.PictureSourceType.CAMERA,
+                    // データの形式
+                    destinationType: Camera.DestinationType.DATA_URL
                 }
-
-                // カメラ起動
-                navigator.camera.getPicture(cameraSuccess, cameraError, options);
-
-                function cameraSuccess(imageData) {
-                    // 撮影、選択した画像を画面に表示
-                    var img = document.querySelector("#photo");
-                    img.src = "data:image/jpeg;base64," + imageData;
-
-
-                    const image = new Image()
-                    image.src = img.src
-                    var ip
-                    // window.onload = () => {
-                    let dst = document.getElementById("dst")
-                    dst.width = 300
-                    dst.height = 300
-
-                    image.onload = () => {
-                        ip = new ImageProc(dst, image)
-                        // ip.threshold = 200;
-                        let element = document.getElementById('input');
-                        element.value = ip.threshold;
-                        let val = $('#input').val();
-                        $('.value').html(val);
-                        ip.threshold = ip.calcThreshold();
-                        ip.convert();
-                    }
-
-                    $('.slider').on('input', function () {
-                        let val = $(this).val();
-                        $('.value').html(val);
-                        var input_val = Number.parseInt(val);
-                        ip.threshold = input_val;
-                        ip.convert();
-                    });
-
-                    $('#reload_btn').on('click', function () {
-                        ip.threshold = ip.calcThreshold();
-                        ip.convert();
-                        $('.value').html(ip.threshold);
-                    })
-
-                    // ip.drawOriginal()    元画像を表示する
-                    // ip.convert() //モノクローム画像に変換する
-                    // ip.threshold = 200   しきい値を200とする
-                    // ip.threshold = ip.calcThreshold()    計算したしきい値を指定する
-                }
-
-                function cameraError(message) {
-                    console.log(message)
+            } else if (mode == "galary") {
+                options = {
+                    // ライブラリを起動
+                    sourceType: Camera.PictureSourceType.PHOTOLIBRARY,
+                    destinationType: Camera.DestinationType.DATA_URL
                 }
             }
 
-        // }
+            // カメラ起動
+            navigator.camera.getPicture(cameraSuccess, cameraError, options);
+
+            function cameraSuccess(imageData) {
+                var fileName = makeUUID() + ".jpg";
+                var fileData = toBlob(imageData, "image/jpeg");
+
+                // 撮影、選択した画像を画面に表示
+                var img = document.querySelector("#photo");
+                img.src = "data:image/jpeg;base64," + imageData;
+
+
+                const image = new Image()
+                image.src = img.src
+                var ip
+
+                let dst = document.getElementById("dst")
+                dst.width = 300
+                dst.height = 300
+
+                image.onload = () => {
+                    ip = new ImageProc(dst, image)
+                    let element = document.getElementById('input');
+                    element.value = ip.threshold;
+                    let val = $('#input').val();
+                    $('.value').html(val);
+                    ip.threshold = ip.calcThreshold();
+                    ip.convert();
+                }
+
+                $('.slider').on('input', function () {
+                    let val = $(this).val();
+                    $('.value').html(val);
+                    var input_val = Number.parseInt(val);
+                    ip.threshold = input_val;
+                    ip.convert();
+                });
+
+                $('#reload_btn').on('click', function () {
+                    ip.threshold = ip.calcThreshold();
+                    ip.convert();
+                    $('.value').html(ip.threshold);
+                })
+
+                // ip.drawOriginal()    元画像を表示する
+                // ip.convert() //モノクローム画像に変換する
+                // ip.threshold = 200   しきい値を200とする
+                // ip.threshold = ip.calcThreshold()    計算したしきい値を指定する
+            }
+
+            function cameraError(message) {
+                console.log(message)
+            }
+
+            // Blobを作成
+            function toBlob(base64, mime_type) {
+                var bin = atob(base64.replace(/^.*,/, ''));
+                var buffer = new Uint8Array(bin.length);
+                for (var i = 0; i < bin.length; i++) {
+                    buffer[i] = bin.charCodeAt(i);
+                }
+
+                try {
+                    console.log("ok")
+                    var blob = new Blob([buffer.buffer], {
+                        type: mime_type
+                    });
+                } catch (e) {
+                    console.log("error");
+                    return false;
+                }
+                return blob;
+                console.log("blod" + blod);
+            }
+
+            // UUID生成
+            function makeUUID() {
+                var d = +new Date();
+                return 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'
+                    .replace(/[xy]/g, function (c) {
+                        var r = (d + Math.random() * 16) % 16 | 0;
+                        return (c == 'x' ? r : (r & 0x3 | 0x8)).toString(16);
+                    });
+            }
+        }
     </script>
 </ons-page>
