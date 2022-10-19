@@ -61,8 +61,8 @@
 
     <script>
         // window.onload = function () {
-        $(function () {
-            $('.tab').on('click', function () {
+        $(function() {
+            $('.tab').on('click', function() {
                 $('.tab, .panel').removeClass('active');
                 $(this).addClass('active');
                 var index = $('.tab').index(this);
@@ -120,7 +120,7 @@
                     ip.convert();
                 }
 
-                $('.slider').on('input', function () {
+                $('.slider').on('input', function() {
                     let val = $(this).val();
                     $('.value').html(val);
                     var input_val = Number.parseInt(val);
@@ -128,7 +128,7 @@
                     ip.convert();
                 });
 
-                $('#reload_btn').on('click', function () {
+                $('#reload_btn').on('click', function() {
                     ip.threshold = ip.calcThreshold();
                     ip.convert();
                     $('.value').html(ip.threshold);
@@ -140,9 +140,6 @@
                 // ip.threshold = ip.calcThreshold()    計算したしきい値を指定する
             }
 
-            function cameraError(message) {
-                console.log(message)
-            }
 
             // Blobを作成
             function toBlob(base64, mime_type) {
@@ -153,23 +150,20 @@
                 }
 
                 try {
-                    console.log("ok")
                     var blob = new Blob([buffer.buffer], {
                         type: mime_type
                     });
                 } catch (e) {
-                    console.log("error");
                     return false;
                 }
                 return blob;
-                console.log("blod" + blod);
             }
 
             // UUID生成
             function makeUUID() {
                 var d = +new Date();
                 return 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'
-                    .replace(/[xy]/g, function (c) {
+                    .replace(/[xy]/g, function(c) {
                         var r = (d + Math.random() * 16) % 16 | 0;
                         return (c == 'x' ? r : (r & 0x3 | 0x8)).toString(16);
                     });
