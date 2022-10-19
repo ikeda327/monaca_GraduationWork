@@ -11,6 +11,11 @@
                 <p>B.Printer</p>
                 <ons-button id="push-button" onclick="document.querySelector('#navigator').pushPage('2_detail.html')">
                     アプリの説明</ons-button>
+
+                <form action="http://10.10.21.21" method="POST">
+                    <input type="text" name="message" style="line-height:3em;">
+                    <input type="submit" value="送信" style="line-height:3em;">
+                </form>
             </div>
         </div>
         <div class="panel">
@@ -140,6 +145,9 @@
                 // ip.threshold = ip.calcThreshold()    計算したしきい値を指定する
             }
 
+            function cameraError(message) {
+                console.log(message)
+            }
 
             // Blobを作成
             function toBlob(base64, mime_type) {
