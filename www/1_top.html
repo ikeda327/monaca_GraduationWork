@@ -11,6 +11,11 @@
                 <p>B.Printer</p>
                 <ons-button id="push-button" onclick="document.querySelector('#navigator').pushPage('2_detail.html')">
                     アプリの説明</ons-button>
+                    
+                    <form action="http://10.10.21.21" method="POST">
+                        <input type="text" style="line-height:2em;">
+                        <input type="submit" value="送信" style="line-height:2em;">
+                    </form>
             </div>
         </div>
         <div class="panel">
@@ -140,18 +145,6 @@
                 // ip.threshold = 200   しきい値を200とする
                 // ip.threshold = ip.calcThreshold()    計算したしきい値を指定する
             }
-
-            $("#btn_save").on("click", function () {
-                navigator.camera.saveToPhotoAlbum(cameraSuccess, cameraError, options);
-
-                function onSuccess() {
-                    console.log("Camera cleanup success.")
-                }
-
-                function onFail(message) {
-                    alert('Failed because: ' + message);
-                }
-            })
 
             // Blobを作成
             function toBlob(base64, mime_type) {
