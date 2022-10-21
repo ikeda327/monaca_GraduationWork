@@ -11,11 +11,13 @@
                 <p>B.Printer</p>
                 <ons-button id="push-button" onclick="document.querySelector('#navigator').pushPage('2_detail.html')">
                     アプリの説明</ons-button>
-                    
+
                     <form action="http://10.10.21.21" method="POST">
                         <input type="text" style="line-height:2em;">
                         <input type="submit" value="送信" style="line-height:2em;">
                     </form>
+
+                <!-- <input type="submit" id="json" value="JSON送信" style="line-height:3em;"> -->
             </div>
         </div>
         <div class="panel">
@@ -67,13 +69,34 @@
 
     <script>
         // window.onload = function () {
-        $(function () {
-            $('.tab').on('click', function () {
+        $(function() {
+            $('.tab').on('click', function() {
                 $('.tab, .panel').removeClass('active');
                 $(this).addClass('active');
                 var index = $('.tab').index(this);
                 $('.panel').eq(index).addClass('active');
             });
+
+            $("#json").on("click", function() {
+                var arr = {
+                    1: 'test',
+                    2: 'test'
+                };
+                $.ajax({
+                    url: 'http://10.10.21.21',
+                    type: 'GET',
+                    data: JSON.stringify(arr),
+                    contentType: 'application/json; charset=utf-8',
+                    dataType: 'json',
+                    async: false,
+                    success: function() {
+                        console.log("success");
+                    },
+                    fail: function() {
+                        console.log("err")
+                    }
+                });
+            })
         });
 
         // 選択ページ
@@ -86,7 +109,11 @@
                     // 標準のカメラを起動
                     sourceType: Camera.PictureSourceType.CAMERA,
                     // データの形式
-                    destinationType: Camera.DestinationType.DATA_URL
+                    destinationType: Camera.DestinationType.DATA_URL,
+                    // 編集
+                    allowEdit: true,
+                    // 保存
+                    saveToPhotoAlbum: true
                 }
             } else if (mode == "galary") {
                 options = {
@@ -126,7 +153,7 @@
                     ip.convert();
                 }
 
-                $('.slider').on('input', function () {
+                $('.slider').on('input', function() {
                     let val = $(this).val();
                     $('.value').html(val);
                     var input_val = Number.parseInt(val);
@@ -134,7 +161,7 @@
                     ip.convert();
                 });
 
-                $('#reload_btn').on('click', function () {
+                $('#reload_btn').on('click', function() {
                     ip.threshold = ip.calcThreshold();
                     ip.convert();
                     $('.value').html(ip.threshold);
@@ -144,6 +171,10 @@
                 // ip.convert() //モノクローム画像に変換する
                 // ip.threshold = 200   しきい値を200とする
                 // ip.threshold = ip.calcThreshold()    計算したしきい値を指定する
+            }
+
+            function cameraError(message) {
+                console.log(message)
             }
 
             // Blobを作成
@@ -168,7 +199,7 @@
             function makeUUID() {
                 var d = +new Date();
                 return 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'
-                    .replace(/[xy]/g, function (c) {
+                    .replace(/[xy]/g, function(c) {
                         var r = (d + Math.random() * 16) % 16 | 0;
                         return (c == 'x' ? r : (r & 0x3 | 0x8)).toString(16);
                     });

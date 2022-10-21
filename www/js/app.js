@@ -66,16 +66,9 @@ window.onload = function () {
         context.clearRect(0, 0, canvas.width, canvas.height);
     });
 
+    // アルバムに保存
     $("#btn_save").on("click", function () {
-        navigator.camera.saveToPhotoAlbum(onSuccess, onFail);
 
-        function onSuccess() {
-            console.log("Camera cleanup success.")
-        }
-
-        function onFail(message) {
-            alert('Failed because: ' + message);
-        }
     })
 
 };
