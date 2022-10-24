@@ -78,22 +78,20 @@
             });
 
             $("#json").on("click", function() {
-                var arr = {
-                    1: 'test',
-                    2: 'test'
-                };
+
                 $.ajax({
-                    url: 'http://10.10.21.21',
-                    type: 'GET',
-                    data: JSON.stringify(arr),
-                    contentType: 'application/json; charset=utf-8',
-                    dataType: 'json',
-                    async: false,
-                    success: function() {
-                        console.log("success");
+                    // url: 'http://10.10.21.21',
+                    url: 'ajax_test.php',
+                    type: 'POST',
+                    data: {
+                        'names': "sample_user",
+                        'numbers': "123-456"
                     },
-                    fail: function() {
-                        console.log("err")
+                    success: function(data) {
+                        alert('OK');
+                    },
+                    error: function(XMLHttpRequest, textStatus, errorThrown) {
+                        alert('NG');
                     }
                 });
             })
