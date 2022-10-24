@@ -12,9 +12,9 @@
                 <ons-button id="push-button" onclick="document.querySelector('#navigator').pushPage('2_detail.html')">
                     アプリの説明</ons-button>
 
-                <form action="http://10.10.21.21" method="POST">
-                    <input type="text" style="line-height:2em;">
-                    <input type="submit" value="送信" style="line-height:2em;">
+                <form>
+                    <!-- <input type="text" style="line-height:2em;"> -->
+                    <input type="submit" value="送信" style="line-height:2em;" id="submit_btn">
                 </form>
 
                 <!-- <input type="submit" id="json" value="JSON送信" style="line-height:3em;"> -->
@@ -77,11 +77,10 @@
                 $('.panel').eq(index).addClass('active');
             });
 
-            $("#json").on("click", function() {
-
+            $("#submit_btn").on("click", function() {
+                
                 $.ajax({
-                    // url: 'http://10.10.21.21',
-                    url: 'ajax_test.php',
+                    url: 'http://localhost/ajax_test.php',
                     type: 'POST',
                     data: {
                         'names': "sample_user",
