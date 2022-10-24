@@ -182,10 +182,10 @@ class ImageProc {
             } else {
                 if (v < this.#thr) {
                     v = 0
-                    // console.log(v)
+                    console.log(v)
                 } else {
                     v = 255
-                    // console.log(v)
+                    console.log(v)
                 }
             }
             // RGB同じ値とする
