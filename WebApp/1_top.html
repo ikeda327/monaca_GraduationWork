@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <script src="js/jquery-3.6.1.min.js"></script>
+    <link rel="stylesheet" href="js/app.js">
+    <link rel="stylesheet" href="css/style.css">
+    <title>トップページ</title>
+</head>
+
+<body>
+    <ul id="tab_menu">
+        <li id="tab1"><a href="#tab01">トップ</a></li>
+        <li id="tab2"><a href="#tab02">ペイント</a></li>
+        <li id="tab3"><a href="#tab03">画像選択</a></li>
+    </ul>
+    <div class="tab_panel">
+        <div class="content">
+            <p>B.Printer</p>
+            <button id="push-button" onclick="">アプリの説明</button>
+            <form>
+                <!-- <input type="text" style="line-height:2em;"> -->
+                <input type="submit" value="送信" style="line-height:2em;" id="submit_btn">
+            </form>
+        </div>
+    </div>
+    <div class="tab_panel">
+        <div>
+            <div class="paint-canvas">
+                <canvas id="canvas"></canvas>
+            </div>
+
+            <div class="btn">
+                <button id="pen-button">ペン</button>
+                <button id="eraser-button">消しゴム</button>
+                <button id="clear-button">全消去</button>
+            </div>
+
+            <div class="btn_fin">
+                <!-- <ons-button id="btn_save">アルバムに保存</ons-button> -->
+                <ons-button id="btn_finish">送信</ons-button>
+            </div>
+        </div>
+    </div>
+    <div class="tab_panel">
+        <div>
+            <!-- 元画像 -->
+            <div class="wrapper">
+                <img id="photo" />
+            </div>
+
+            <!-- 白黒画像 -->
+            <div class="wrapper2">
+                <canvas id="dst"></canvas>
+            </div>
+
+            <!-- 調節スライドバー -->
+            <div class="slide">
+                <input type="range" id="input" class="slider" value="" min="0" max="255" step="5">
+                <label class="value">0</label>
+                <ons-button class="reload" id="reload_btn">自動</ons-button>
+            </div>
+
+            <div class="btn_fin2">
+                <ons-button id="btn_finish">完成</ons-button>
+            </div>
+
+            <div class="tabbar">
+                <img src="images/camera.png" id="camera" onclick="snapPicture('camera')" />
+                <img src="images/folda.png" id="galary" onclick="snapPicture('galary')" />
+            </div>
+
+        </div>
+    </div>
+
+    <script>
+        $(function () {
+            $('.tab_panel').css('display', 'none');
+            var hash = location.hash;
+            if (hash.match(/#tab01/)) {
+                $('.tab_panel').eq(0).fadeIn();
+                $('#tab_menu li').eq(0).addClass('selected');
+            } else if (hash.match(/#tab02/)) {
+                $('.tab_panel').eq(1).fadeIn();
+                $('#tab_menu li').eq(1).addClass('selected');
+            } else if (hash.match(/#tab03/)) {
+                $('.tab_panel').eq(2).fadeIn();
+                $('#tab_menu li').eq(2).addClass('selected');
+            } else {
+                $('.tab_panel').eq(0).fadeIn();
+                $('#tab_menu li').eq(0).addClass('selected');
+            }
+            $('#tab_menu li a').click(function () {
+                var thisUrl = $(this).attr('href');
+                history.replaceState('', '', thisUrl);
+                var index01 = $('#tab_menu li a').index(this);
+                $('.tab_panel').css('display', 'none');
+                $('.tab_panel').eq(index01).fadeIn();
+                $('#tab_menu li').removeClass('selected');
+                $(this).parent().addClass('selected');
+            });
+        });
+    </script>
+</body>
+
+</html>

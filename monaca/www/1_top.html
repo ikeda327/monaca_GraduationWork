@@ -17,7 +17,7 @@
                     <input type="submit" value="送信" style="line-height:2em;" id="submit_btn">
                 </form>
 
-                <!-- <input type="submit" id="json" value="JSON送信" style="line-height:3em;"> -->
+                <input type="submit" name="submit" id="submit" value="ajaxテスト" style="line-height:3em;">
             </div>
         </div>
         <div class="panel">
@@ -80,11 +80,11 @@
             $("#submit_btn").on("click", function() {
                 
                 $.ajax({
-                    url: 'http://localhost/ajax_test.php',
+                    url: 'http://10.10.50.116/ajax_test.php',
                     type: 'POST',
                     data: {
-                        'names': "sample_user",
-                        'numbers': "123-456"
+                        'name': "sample_user",
+                        'number': "123-456"
                     },
                     success: function(data) {
                         alert('OK');
