@@ -75,56 +75,64 @@ window.onload = function () {
 
     })
 
-    $('#myimage').on('change', function (e) {
+    // let _src='';
+    $('#myimage').on('change', async function (e) {
         // input='file' で選択した画像をプレビューに表示
         var reader = new FileReader();
         reader.onload = function (e) {
             $("#photo").attr('src', e.target.result);
+            // console.log(e.target.result);
+            // _src=e.target.result;
+            // console.log(_src);
+            after_read(e.target.result);
         }
 
-        var url = reader.readAsDataURL(e.target.files[0]);
+        let src=reader.readAsDataURL(e.target.files[0]);
+        // var url = reader.readAsDataURL(e.target.files[0]);
         // console.log(reader.readAsDataURL(e.target.files[0]))
 
-        var img = document.querySelector("#photo");
-        img.src = "data:image/jpeg;base64," + url;
+        // var img = document.querySelector("#photo");
+        // img.src = "data:image/jpeg;base64," + url;
 
-        console.log(img.src)
+        // console.log(img.src)
 
         // 白黒化　
         const image = new Image()
-        image.src = img.src
-        var ip
+        function after_read(_src){
+            console.log(_src);
+            image.src = _src;
+            var ip
 
-        let dst = document.getElementById("dst")
-        dst.width = 300
-        dst.height = 300
+            let dst = document.getElementById("dst")
+            dst.width = 300
+            dst.height = 300
 
-        image.onload = () => {
-            ip = new ImageProc(dst, image)
-            let element = document.getElementById('input');
-            element.value = ip.threshold;
-            let val = $('#input').val();
-            $('.value').html(val);
-            ip.threshold = ip.calcThreshold();
-            ip.convert();
+            image.onload = () => {
+                ip = new ImageProc(dst, image)
+                let element = document.getElementById('input');
+                element.value = ip.threshold;
+                let val = $('#input').val();
+                $('.value').html(val);
+                ip.threshold = ip.calcThreshold();
+                ip.convert();
+            }
+
+            // 白黒 調節バー
+            $('.slider').on('input', function () {
+                let val = $(this).val();
+                $('.value').html(val);
+                var input_val = Number.parseInt(val);
+                ip.threshold = input_val;
+                ip.convert();
+            });
+
+            // 自動ボタン
+            $('#reload_btn').on('click', function () {
+                ip.threshold = ip.calcThreshold();
+                ip.convert();
+                $('.value').html(ip.threshold);
+            })
         }
-
-        // 白黒 調節バー
-        $('.slider').on('input', function () {
-            let val = $(this).val();
-            $('.value').html(val);
-            var input_val = Number.parseInt(val);
-            ip.threshold = input_val;
-            ip.convert();
-        });
-
-        // 自動ボタン
-        $('#reload_btn').on('click', function () {
-            ip.threshold = ip.calcThreshold();
-            ip.convert();
-            $('.value').html(ip.threshold);
-        })
-
         // ip.drawOriginal()    元画像を表示する
         // ip.convert() //モノクローム画像に変換する
         // ip.threshold = 200   しきい値を200とする
