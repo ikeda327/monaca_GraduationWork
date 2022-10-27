@@ -87,7 +87,7 @@ window.onload = function () {
             after_read(e.target.result);
         }
 
-        let src=reader.readAsDataURL(e.target.files[0]);
+        let src = reader.readAsDataURL(e.target.files[0]);
         // var url = reader.readAsDataURL(e.target.files[0]);
         // console.log(reader.readAsDataURL(e.target.files[0]))
 
@@ -99,7 +99,7 @@ window.onload = function () {
         // 白黒化　
         const image = new Image()
         function after_read(_src){
-            console.log(_src);
+            // console.log(_src);
             image.src = _src;
             var ip
 
@@ -238,8 +238,9 @@ class ImageProc {
      * モノクローム画像に変換し表示する
      */
     convert() {
+        let v;
         for (let i = 0; i < this.#dst.data.length; i += 4) {
-            let v = ImageProc.grayscale(this.#src.data[i], this.#src.data[i + 1], this.#src.data[i + 2])
+            v = ImageProc.grayscale(this.#src.data[i], this.#src.data[i + 1], this.#src.data[i + 2])
             if (this.#src.data[i + 3] < 255) {
                 v *= this.#src.data[i + 3] / 255
             }
@@ -258,6 +259,14 @@ class ImageProc {
             this.#dst.data[i] = this.#dst.data[i + 1] = this.#dst.data[i + 2] = v
             // 不透明
             this.#dst.data[i + 3] = 255
+
+            let img_data = 0;
+            if( v = 255 ) {
+                img_data = 1
+            }
+
+            console.log(img_data)
+
         }
         this.#ctx.putImageData(this.#dst, 0, 0)
     }
