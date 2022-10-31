@@ -1,3 +1,31 @@
+$(function() {
+    // メニュータブ
+    $('.tab_panel').css('display', 'none');
+        var hash = location.hash;
+        if (hash.match(/#tab01/)) {
+            $('.tab_panel').eq(0).fadeIn();
+            $('#tab_menu li').eq(0).addClass('selected');
+        } else if (hash.match(/#tab02/)) {
+            $('.tab_panel').eq(1).fadeIn();
+            $('#tab_menu li').eq(1).addClass('selected');
+        } else if (hash.match(/#tab03/)) {
+            $('.tab_panel').eq(2).fadeIn();
+            $('#tab_menu li').eq(2).addClass('selected');
+        } else {
+            $('.tab_panel').eq(0).fadeIn();
+            $('#tab_menu li').eq(0).addClass('selected');
+        }
+        $('#tab_menu li a').click(function () {
+            var thisUrl = $(this).attr('href');
+            history.replaceState('', '', thisUrl);
+            var index01 = $('#tab_menu li a').index(this);
+            $('.tab_panel').css('display', 'none');
+            $('.tab_panel').eq(index01).fadeIn();
+            $('#tab_menu li').removeClass('selected');
+            $(this).parent().addClass('selected');
+    });
+})
+
 window.onload = function () {
     $(window).on('touchmove.noScroll', function (e) {
         e.preventDefault();
@@ -104,8 +132,8 @@ window.onload = function () {
             var ip
 
             let dst = document.getElementById("dst")
-            dst.width = 300
-            dst.height = 300
+            dst.width = 150
+            dst.height = 150
 
             image.onload = () => {
                 ip = new ImageProc(dst, image)
@@ -239,35 +267,47 @@ class ImageProc {
      */
     convert() {
         let v;
+        let data = "";
+        let monochrome_data ="";
+
         for (let i = 0; i < this.#dst.data.length; i += 4) {
             v = ImageProc.grayscale(this.#src.data[i], this.#src.data[i + 1], this.#src.data[i + 2])
             if (this.#src.data[i + 3] < 255) {
                 v *= this.#src.data[i + 3] / 255
             }
             // console.log("alpha:",this.#src.data[i + 3],",value:",v)
+
+            let img_data;   // ０ or １
             if (this.#src.data[i + 3] == 0 && v == 0) {
                 // 透明の場合白とする
                 v = 255
+                img_data = 1
+                data += img_data + ' ';
             } else {
                 if (v < this.#thr) {
                     v = 0
+                    img_data = 0
+                    data += img_data + ' ';
+
                 } else {
                     v = 255
+                    img_data = 1
+                    data += img_data + ' ';
                 }
+                
             }
             // RGB同じ値とする
             this.#dst.data[i] = this.#dst.data[i + 1] = this.#dst.data[i + 2] = v
             // 不透明
             this.#dst.data[i + 3] = 255
-
-            let img_data = 0;
-            if( v = 255 ) {
-                img_data = 1
-            }
-
-            console.log(img_data)
-
         }
+
+        // 白黒 0,1データ（文字列）
+        const data_300 = data.match(/.{300}/g);
+        monochrome_data = data_300.join('\n')
+        // console.log(monochrome_data)
+
+        // console.log(data)
         this.#ctx.putImageData(this.#dst, 0, 0)
     }
 
@@ -315,3 +355,41 @@ class ImageProc {
         return t
     }
 }
+
+$(function() {
+    // データ Ajax通信
+    $("#submit_btn").on("click", function () {
+        $.ajax({
+            url: 'test.php',
+            type: 'POST',
+            data: {
+                'sample': "test_test"
+            },
+            dataType: 'text',
+            success: function (data) {
+                alert('OK');
+            },
+            error: function (XMLHttpRequest, textStatus, errorThrown) {
+                alert('NG');
+            }
+        });
+    })
+
+    $("#btn_finish").on("click", function () {
+        console.log("click");
+        console.log(monochrome_data);
+
+        $.ajax({
+            url: 'test.php',
+            type: 'POST',
+            data: monochrome_data,
+            dataType: 'text',
+            success: function (data) {
+                alert('OK');
+            },
+            error: function (XMLHttpRequest, textStatus, errorThrown) {
+                alert('NG');
+            }
+        });
+    })
+})

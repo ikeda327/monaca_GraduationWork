@@ -115,6 +115,11 @@ canvas {
     margin: 5px auto;
 }
 
+#dst {
+    width: 300px;
+    height: 300px;
+}
+
 .btn_fin2 {
     width: 35%;
     margin: .5em auto 0 auto;
