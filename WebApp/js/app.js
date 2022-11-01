@@ -1,3 +1,6 @@
+var monochrome_data;
+var send_data;
+
 $(function() {
     // メニュータブ
     $('.tab_panel').css('display', 'none');
@@ -63,6 +66,7 @@ window.onload = function () {
         var endY = point.y;
         // 直線を描画
         context.lineWidth = "5"
+        context.lineCap = "round";
         context.beginPath();
         context.moveTo(startX, startY);
         context.lineTo(endX, endY);
@@ -99,9 +103,10 @@ window.onload = function () {
     });
 
     // アルバムに保存
-    $("#btn_save").on("click", function () {
+    // $("#btn_save").on("click", function () {
 
-    })
+    // })
+
 
     // let _src='';
     $('#myimage').on('change', async function (e) {
@@ -132,8 +137,8 @@ window.onload = function () {
             var ip
 
             let dst = document.getElementById("dst")
-            dst.width = 150
-            dst.height = 150
+            dst.width = 320
+            dst.height = 320
 
             image.onload = () => {
                 ip = new ImageProc(dst, image)
@@ -268,7 +273,7 @@ class ImageProc {
     convert() {
         let v;
         let data = "";
-        let monochrome_data ="";
+        monochrome_data ="";
 
         for (let i = 0; i < this.#dst.data.length; i += 4) {
             v = ImageProc.grayscale(this.#src.data[i], this.#src.data[i + 1], this.#src.data[i + 2])
@@ -281,20 +286,19 @@ class ImageProc {
             if (this.#src.data[i + 3] == 0 && v == 0) {
                 // 透明の場合白とする
                 v = 255
-                img_data = 1
-                data += img_data + ' ';
+                img_data = 0
+                data += img_data //+ ' ';
             } else {
                 if (v < this.#thr) {
                     v = 0
-                    img_data = 0
-                    data += img_data + ' ';
+                    img_data = 1
+                    data += img_data //+ ' ';
 
                 } else {
                     v = 255
-                    img_data = 1
-                    data += img_data + ' ';
+                    img_data = 0
+                    data += img_data //+ ' ';
                 }
-                
             }
             // RGB同じ値とする
             this.#dst.data[i] = this.#dst.data[i + 1] = this.#dst.data[i + 2] = v
@@ -304,10 +308,41 @@ class ImageProc {
 
         // 白黒 0,1データ（文字列）
         const data_300 = data.match(/.{300}/g);
-        monochrome_data = data_300.join('\n')
+        monochrome_data = data_300;
+
+        var str = "";
+        for( let n = 0; n < data_300.length; n++ ) {
+            str += data_300[n] + "\\n"; 
+        }
+
+        let byte = 0
+        let bytes = new Array()
+
+        let index = 0
+        str.split("").forEach(e => {
+            if (e == '\n') {
+                bytes.push(byte.toString(16).padStart(2,'0'))
+                bytes.push(e)
+                index = 0
+                byte = 0
+            } else {
+                byte <<= 1
+                byte |= Number.parseInt(e)
+                index++
+                if (index > 7) {
+                    bytes.push(byte.toString(16).padStart(2,'0'))
+                    index = 0
+                    byte = 0
+                }
+            }
+        })
+
+        send_data = bytes.join("");
+        console.log(send_data);
+
+        // monochrome_data = data_300.join('\n')
         // console.log(monochrome_data)
 
-        // console.log(data)
         this.#ctx.putImageData(this.#dst, 0, 0)
     }
 
@@ -356,16 +391,15 @@ class ImageProc {
     }
 }
 
-$(function() {
-    // データ Ajax通信
-    $("#submit_btn").on("click", function () {
+// データ Ajax通信
+$(function () {
+    // ペイントから送信
+    $("#paint_finish").on("click", function () {
         $.ajax({
-            url: 'test.php',
+            url: '',
             type: 'POST',
-            data: {
-                'sample': "test_test"
-            },
-            dataType: 'text',
+            data: {},
+            // dataType: 'text',
             success: function (data) {
                 alert('OK');
             },
@@ -375,15 +409,19 @@ $(function() {
         });
     })
 
-    $("#btn_finish").on("click", function () {
-        console.log("click");
-        console.log(monochrome_data);
+    // 画像選択から送信
+    $("#select_finish").on("click", function () {
+        // console.log(monochrome_data);
 
         $.ajax({
-            url: 'test.php',
+            url: 'http://10.10.21.21/data',
             type: 'POST',
-            data: monochrome_data,
-            dataType: 'text',
+            // data: {data:monochrome_data},
+            // data: monochrome_data.copyWithin(0,10).join('\n'),
+            data: send_data,
+            processData: false,
+            contentType: 'text/plain',
+            // dataType: 'text',
             success: function (data) {
                 alert('OK');
             },
