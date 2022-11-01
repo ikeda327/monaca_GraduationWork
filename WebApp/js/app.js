@@ -104,9 +104,11 @@ window.onload = function () {
 
     // アルバムに保存
     // $("#btn_save").on("click", function () {
-
     // })
 
+    $("#paint_finish").on("click", function() {
+        
+    })
 
     // let _src='';
     $('#myimage').on('change', async function (e) {
@@ -423,10 +425,10 @@ $(function () {
             contentType: 'text/plain',
             // dataType: 'text',
             success: function (data) {
-                alert('OK');
+                // alert('OK');
             },
             error: function (XMLHttpRequest, textStatus, errorThrown) {
-                alert('NG');
+                // alert('NG');
             }
         });
     })
