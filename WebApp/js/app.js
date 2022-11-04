@@ -27,6 +27,54 @@ $(function() {
             $('#tab_menu li').removeClass('selected');
             $(this).parent().addClass('selected');
     });
+
+    // ペイントから送信
+    $("#paint_finish").on("click", function () {
+
+        var image = new Image()
+        var dst = document.getElementById("canvas");
+
+        ip = new ImageProc(dst)//, image);
+        ip.convert();
+
+        // console.log(send_data)
+        
+        // $.ajax({
+        //     url: 'http://10.10.21.21/data',
+        //     type: 'POST',
+        //     data: send_data,
+        //     processData: false,
+        //     contentType: 'text/plain',
+        //     // dataType: 'text',
+        //     success: function (data) {
+        //         // alert('OK');
+        //     },
+        //     error: function (XMLHttpRequest, textStatus, errorThrown) {
+        //         // alert('NG');
+        //     }
+        // });
+    })
+
+    // 画像選択から送信
+    $("#select_finish").on("click", function () {
+
+        $.ajax({
+            url: 'http://10.10.21.21/data',
+            type: 'POST',
+            // data: {data:monochrome_data},
+            // data: monochrome_data.copyWithin(0,10).join('\n'),
+            data: send_data,
+            processData: false,
+            contentType: 'text/plain',
+            // dataType: 'text',
+            success: function (data) {
+                // alert('OK');
+            },
+            error: function (XMLHttpRequest, textStatus, errorThrown) {
+                // alert('NG');
+            }
+        });
+    })
 })
 
 window.onload = function () {
@@ -106,10 +154,6 @@ window.onload = function () {
     // $("#btn_save").on("click", function () {
     // })
 
-    $("#paint_finish").on("click", function() {
-        
-    })
-
     // let _src='';
     $('#myimage').on('change', async function (e) {
         // input='file' で選択した画像をプレビューに表示
@@ -175,7 +219,6 @@ window.onload = function () {
     });
 };
 
-
 /**
  * 
  */
@@ -217,14 +260,18 @@ class ImageProc {
             width: canvas.width,
             height: canvas.height
         }
-        this.#resize(is, canvas.width)
-
         this.#ctx = canvas.getContext("2d");
-        this.#ctx.drawImage(image, 0, 0, image.width, image.height, is.x, is.y, is.width, is.height);
+        if (image != undefined){
+            this.#resize(is, canvas.width)
+            this.#ctx.drawImage(image, 0, 0, image.width, image.height, is.x, is.y, is.width, is.height);
+        }
+
+
         this.#src = this.#ctx.getImageData(0, 0, canvas.width, canvas.height)
         this.#dst = this.#ctx.createImageData(canvas.width, canvas.height)
         // カラー画像を元にしきい値を計算する
         this.#thr = this.calcThreshold()
+        
     }
 
     /**
@@ -315,11 +362,13 @@ class ImageProc {
         var str = "";
         for( let n = 0; n < data_300.length; n++ ) {
             str += data_300[n] + "\\n"; 
+            // console.log(str)
         }
 
         let byte = 0
         let bytes = new Array()
 
+        // 16進数化
         let index = 0
         str.split("").forEach(e => {
             if (e == '\n') {
@@ -340,10 +389,10 @@ class ImageProc {
         })
 
         send_data = bytes.join("");
-        console.log(send_data);
+        // console.log(send_data);
 
-        // monochrome_data = data_300.join('\n')
-        // console.log(monochrome_data)
+        monochrome_data = data_300.join('\n')
+        console.log(monochrome_data)
 
         this.#ctx.putImageData(this.#dst, 0, 0)
     }
@@ -393,43 +442,3 @@ class ImageProc {
     }
 }
 
-// データ Ajax通信
-$(function () {
-    // ペイントから送信
-    $("#paint_finish").on("click", function () {
-        $.ajax({
-            url: '',
-            type: 'POST',
-            data: {},
-            // dataType: 'text',
-            success: function (data) {
-                alert('OK');
-            },
-            error: function (XMLHttpRequest, textStatus, errorThrown) {
-                alert('NG');
-            }
-        });
-    })
-
-    // 画像選択から送信
-    $("#select_finish").on("click", function () {
-        // console.log(monochrome_data);
-
-        $.ajax({
-            url: 'http://10.10.21.21/data',
-            type: 'POST',
-            // data: {data:monochrome_data},
-            // data: monochrome_data.copyWithin(0,10).join('\n'),
-            data: send_data,
-            processData: false,
-            contentType: 'text/plain',
-            // dataType: 'text',
-            success: function (data) {
-                // alert('OK');
-            },
-            error: function (XMLHttpRequest, textStatus, errorThrown) {
-                // alert('NG');
-            }
-        });
-    })
-})
