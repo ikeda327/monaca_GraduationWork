@@ -52,8 +52,8 @@
 /* ペイント */
 .paint-canvas {
     margin: 2em auto;
-    width: 350px;
-    height: 350px;
+    width: 320px;
+    height: 320px;
 }
 
 canvas {
