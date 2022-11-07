@@ -139,15 +139,6 @@ window.onload = function () {
         context.clearRect(0, 0, canvas.width, canvas.height);
     });
 
-    // アルバムに保存
-    // $("#btn_save").on("click", function () {
-
-    // })
-
-    $("#paint_finish").on("click", function() {
-
-    })
-
     // let _src='';
     $('#myimage').on('change', async function (e) {
         // input='file' で選択した画像をプレビューに表示
@@ -249,14 +240,11 @@ class ImageProc {
             this.#ctx.drawImage(image, 0, 0, image.width, image.height, is.x, is.y, is.width, is.height);
         }
 
-        
-
         // ブレークポイント
         this.#src = this.#ctx.getImageData(0, 0, canvas.width, canvas.height)
         this.#dst = this.#ctx.createImageData(canvas.width, canvas.height)
         // カラー画像を元にしきい値を計算する
         this.#thr = this.calcThreshold()
-
     }
     /**
      * sizeで指定された範囲におさまるサイズを計算する
