@@ -4,7 +4,7 @@ var send_data;
 $(function () {
     $('#myimage').on('change', async function (e) {
         // input='file' で選択した画像をプレビューに表示
-        var reader = new FileReader();
+        let reader = new FileReader();
         reader.onload = function (e) {
             $("#photo").attr('src', e.target.result);
             after_read(e.target.result);
@@ -17,7 +17,7 @@ $(function () {
         function after_read(_src) {
             // console.log(_src);
             image.src = _src;
-            var ip
+            let ip
             let dst = document.getElementById("dst")
             dst.width = 320
             dst.height = 320
@@ -34,7 +34,7 @@ $(function () {
             $('.slider').on('input', function () {
                 let val = $(this).val();
                 $('.value').html(val);
-                var input_val = Number.parseInt(val);
+                let input_val = Number.parseInt(val);
                 ip.threshold = input_val;
                 send_data = ip.convert();
             });
@@ -57,18 +57,14 @@ $(function () {
         $.ajax({
             url: 'http://10.10.21.21/data',
             type: 'POST',
-            // data: {data:monochrome_data},
-            // data: monochrome_data.copyWithin(0,10).join('\n'),
             data: send_data,
             processData: false,
             contentType: 'text/plain',
             // dataType: 'text',
             success: function (data) {
-                alert('OK');
                 // alert('OK');
             },
             error: function (XMLHttpRequest, textStatus, errorThrown) {
-                alert('NG');
                 // alert('NG');
             }
         });

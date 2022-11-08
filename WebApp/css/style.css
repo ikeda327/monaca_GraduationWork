@@ -81,7 +81,7 @@ canvas {
 
 #paint_finish {
     width: 100%;
-    line-height: 3em;    
+    line-height: 3em;
 }
 
 /* 選択 */
@@ -129,4 +129,18 @@ canvas {
 .btn_fin2 {
     width: 35%;
     margin: .5em auto 0 auto;
+}
+
+.detail-page {
+    animation: fadein 1s forwards;
+}
+
+@keyframes fadein {
+    0% {
+        opacity: 0
+    }
+
+    100% {
+        opacity: 1
+    }
 }

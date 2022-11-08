@@ -5,33 +5,33 @@ $(function () {
         e.preventDefault();
     });
     // キャンバス機能
-    var canvas = $('#canvas')[0];
-    var context = canvas.getContext('2d');
-    var startX, startY;
-    var w = $('.paint-canvas').width();
-    var h = $('.paint-canvas').height();
+    let canvas = $('#canvas')[0];
+    let context = canvas.getContext('2d');
+    let startX, startY;
+    let w = $('.paint-canvas').width();
+    let h = $('.paint-canvas').height();
     let paint_ip = new ImageProc(canvas)
     $('#canvas').attr('width', w);
     $('#canvas').attr('height', h);
     $('canvas').on('touchstart', function (event) {
         // 画面がタッチされたときの処理を記述する
         event.preventDefault();
-        var pageX = event.originalEvent.touches[0].pageX;
-        var pageY = event.originalEvent.touches[0].pageY;
+        let pageX = event.originalEvent.touches[0].pageX;
+        let pageY = event.originalEvent.touches[0].pageY;
         // タッチポイントからキャンバスの位置を差し引いてキャンバス座標に変え、
         // 描画の開始位置とする
-        var point = getCanvasPoint(pageX, pageY);
+        let point = getCanvasPoint(pageX, pageY);
         startX = point.x;
         startY = point.y;
     });
     $('canvas').on('touchmove', function (event) {
         // 画面がタッチされながら移動したときの処理を記述する
         event.preventDefault();
-        var pageX = event.originalEvent.touches[0].pageX;
-        var pageY = event.originalEvent.touches[0].pageY;
-        var point = getCanvasPoint(pageX, pageY);
-        var endX = point.x;
-        var endY = point.y;
+        let pageX = event.originalEvent.touches[0].pageX;
+        let pageY = event.originalEvent.touches[0].pageY;
+        let point = getCanvasPoint(pageX, pageY);
+        let endX = point.x;
+        let endY = point.y;
         // 直線を描画
         context.lineWidth = "5"
         context.lineCap = "round";
@@ -45,7 +45,7 @@ $(function () {
     });
     // 画面のx,y座標からcanvasのx,y座標に変換する
     function getCanvasPoint(pageX, pageY) {
-        var base = canvas.getBoundingClientRect();
+        let base = canvas.getBoundingClientRect();
         return {
             x: pageX - base.left,
             y: pageY - base.top
@@ -70,7 +70,7 @@ $(function () {
     $("#paint_finish").on("click", function () {
         // paint_ip.refresh()
         send_data = paint_ip.convert()
-        // var image = new Image()
+        // let image = new Image()
         // console.log(send_data)
 
         // $.ajax({
