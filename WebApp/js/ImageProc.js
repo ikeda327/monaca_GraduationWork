@@ -129,6 +129,7 @@
             this.#dst.data[i + 3] = 255
         }
         // 白黒 0,1データ（文字列）
+        // const data_320 = data.match(/.{640}/g);
         const data_320 = data.match(/.{320}/g);
         monochrome_data = data_320;
         var str = "";

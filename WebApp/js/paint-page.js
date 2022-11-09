@@ -10,7 +10,7 @@ $(function () {
     let startX, startY;
     let w = $('.paint-canvas').width();
     let h = $('.paint-canvas').height();
-    let paint_ip = new ImageProc(canvas)
+    // let paint_ip = new ImageProc(canvas)
     $('#canvas').attr('width', w);
     $('#canvas').attr('height', h);
     $('canvas').on('touchstart', function (event) {
@@ -69,9 +69,8 @@ $(function () {
     // ペイントから送信
     $("#paint_finish").on("click", function () {
         // paint_ip.refresh()
+        let paint_ip = new ImageProc(canvas)
         send_data = paint_ip.convert()
-        // let image = new Image()
-        // console.log(send_data)
 
         // $.ajax({
         //     url: 'http://10.10.21.21/data',

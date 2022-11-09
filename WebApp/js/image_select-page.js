@@ -53,7 +53,6 @@ $(function () {
 
     // 画像選択から送信
     $("#select_finish").on("click", function () {
-        // console.log(monochrome_data);
         $.ajax({
             url: 'http://10.10.21.21/data',
             type: 'POST',
