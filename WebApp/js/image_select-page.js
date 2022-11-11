@@ -1,10 +1,11 @@
-var monochrome_data;
-var send_data;
+// var monochrome_data;
+// var send_data;
 
 $(function () {
+    let ip
     $('#myimage').on('change', async function (e) {
         // input='file' で選択した画像をプレビューに表示
-        let reader = new FileReader();
+        var reader = new FileReader();
         reader.onload = function (e) {
             $("#photo").attr('src', e.target.result);
             after_read(e.target.result);
@@ -17,7 +18,6 @@ $(function () {
         function after_read(_src) {
             // console.log(_src);
             image.src = _src;
-            let ip
             let dst = document.getElementById("dst")
             dst.width = 320
             dst.height = 320
@@ -34,7 +34,7 @@ $(function () {
             $('.slider').on('input', function () {
                 let val = $(this).val();
                 $('.value').html(val);
-                let input_val = Number.parseInt(val);
+                var input_val = Number.parseInt(val);
                 ip.threshold = input_val;
                 send_data = ip.convert();
             });
@@ -53,17 +53,25 @@ $(function () {
 
     // 画像選択から送信
     $("#select_finish").on("click", function () {
+        // console.log(monochrome_data);
+        let send_data = ImageProc.toBinaryData(ip.data,16)
+        // let send_data = ImageProc.toBinaryData(ip.data,-16)
+        console.log(send_data)
         $.ajax({
             url: 'http://10.10.21.21/data',
             type: 'POST',
+            // data: {data:monochrome_data},
+            // data: monochrome_data.copyWithin(0,10).join('\n'),
             data: send_data,
             processData: false,
             contentType: 'text/plain',
             // dataType: 'text',
             success: function (data) {
+                alert('OK');
                 // alert('OK');
             },
             error: function (XMLHttpRequest, textStatus, errorThrown) {
+                alert('NG');
                 // alert('NG');
             }
         });
