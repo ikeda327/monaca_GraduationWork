@@ -1,3 +1,14 @@
+body {
+    margin: 0;
+    padding: 0;
+    /* background-color: ; */
+}
+
+.body-wrapper {
+    margin: 10px;
+    /* height: 100vh; */
+}
+
 #tab_menu {
     display: flex;
     align-items: center;
@@ -50,10 +61,24 @@
 }
 
 /* ペイント */
+/* .paint-page {
+    position: relative;
+    overflow: hidden;
+}
+
+.paint-img {
+    position: absolute;
+    opacity: .5;
+    top: 0;
+    width: 100%;
+    z-index: 1;
+} */
+
 .paint-canvas {
     margin: 2em auto;
     width: 320px;
     height: 320px;
+    /* z-index: 999; */
 }
 
 canvas {
@@ -71,6 +96,19 @@ canvas {
 .paint_btn {
     padding: 0 10px;
     line-height: 3em;
+}
+
+.paint-slide {
+    margin-top: 1em;
+}
+
+#paint-input {
+    width: 200px;
+    height: 16px;
+}
+
+#slide-list option {
+    color: blue;
 }
 
 .btn_fin {

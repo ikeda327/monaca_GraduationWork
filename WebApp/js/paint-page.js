@@ -22,6 +22,16 @@ $(function () {
     $('#canvas').attr('height', h);
     // →移動
     // let paint_ip = new ImageProc(canvas)
+
+    //デフォルトのペン太さ
+    let MY_BURASISIZE = 6;
+
+    $('.paint-slider').on('input', function () {
+        let val = $(this).val();
+        var input_val = Number.parseInt(val);
+        MY_BURASISIZE = input_val;
+    });
+
     $('canvas').on('touchstart', function (event) {
         // 画面がタッチされたときの処理を記述する
         event.preventDefault();
@@ -42,7 +52,8 @@ $(function () {
         var endX = point.x;
         var endY = point.y;
         // 直線を描画
-        context.lineWidth = "5"
+        context.lineWidth = MY_BURASISIZE;
+        // context.lineWidth = "5"
         context.lineCap = "round";
         context.beginPath();
         context.moveTo(startX, startY);
@@ -63,12 +74,15 @@ $(function () {
     // ペン
     $("#pen-button").on("click ", function () {
         context.strokeStyle = "#000";
-        context.lineWidth = "5"
+        // context.lineWidth = "5"
+        context.lineWidth = MY_BURASISIZE;
     });
     // 消しゴム
     $("#eraser-button").on("click ", function () {
         context.strokeStyle = "#fff";
-        context.lineWidth = "10";
+        // context.lineWidth = "10";       
+        context.lineWidth = MY_BURASISIZE;
+
     });
     // 全消去
     $("#clear-button").on("click ", function () {
@@ -85,10 +99,10 @@ $(function () {
         // let ip = new ImageProc(canvas)
         // ip.convert()
 
-        let send_data = ImageProc.toBinaryData(context.getImageData(0,0,w,h).data,16)
+        let send_data = ImageProc.toBinaryData(context.getImageData(0, 0, w, h).data, 16)
         // let send_data = ImageProc.toBinaryData(context.getImageData(0,0,w,h).data,-16)
         console.log(send_data)
-        
+
         // paint_ip.refresh()
         // send_data = paint_ip.convert()
         // var image = new Image()
