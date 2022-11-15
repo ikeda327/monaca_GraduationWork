@@ -108,19 +108,19 @@ $(function () {
         // var image = new Image()
         // console.log(send_data)
 
-        // $.ajax({
-        //     url: 'http://10.10.21.21/data',
-        //     type: 'POST',
-        //     data: send_data,
-        //     processData: false,
-        //     contentType: 'text/plain',
-        //     // dataType: 'text',
-        //     success: function (data) {
-        //         // alert('OK');
-        //     },
-        //     error: function (XMLHttpRequest, textStatus, errorThrown) {
-        //         // alert('NG');
-        //     }
-        // });
+        $.ajax({
+            url: 'http://10.10.21.21/data',
+            type: 'POST',
+            data: send_data,
+            processData: false,
+            contentType: 'text/plain',
+            // dataType: 'text',
+            success: function (data) {
+                // alert('OK');
+            },
+            error: function (XMLHttpRequest, textStatus, errorThrown) {
+                // alert('NG');
+            }
+        });
     })
 })

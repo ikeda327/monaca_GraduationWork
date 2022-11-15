@@ -57,7 +57,8 @@ class ImageProc {
             hex.push(b.toString(16).padStart(2, '0'))
             if (mode == 16) {
                 // return hex.join('').match(/.{80}/g).join('\n')
-                return hex
+                // return hex
+                return hex.join('')
             } else {
                 return '0x' + hex.join(',0x') + ','
             }
