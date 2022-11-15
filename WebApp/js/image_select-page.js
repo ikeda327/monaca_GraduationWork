@@ -67,11 +67,9 @@ $(function () {
             contentType: 'text/plain',
             // dataType: 'text',
             success: function (data) {
-                alert('OK');
                 // alert('OK');
             },
             error: function (XMLHttpRequest, textStatus, errorThrown) {
-                alert('NG');
                 // alert('NG');
             }
         });
