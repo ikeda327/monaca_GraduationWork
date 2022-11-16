@@ -42,7 +42,8 @@ class ImageProc {
         }
 
         if (mode == 2) {
-            return result.join('').match(/.{320}/g).join('\n')
+            // return result.join('').match(/.{320}/g).join('\n')
+            return result.join('').match(/.{80}/g).join('\n')
         } else {
             let hex = new Array()
             let b = 0
