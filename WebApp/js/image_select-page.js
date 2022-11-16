@@ -54,9 +54,11 @@ $(function () {
     // 画像選択から送信
     $("#select_finish").on("click", function () {
         // console.log(monochrome_data);
-        let send_data = ImageProc.toBinaryData(ip.data,16)
+
+        // console.log(ImageProc.toBinaryData(ip.data,2))
+        let send_data = ImageProc.toBinaryData(ip.data, 16)
         // let send_data = ImageProc.toBinaryData(ip.data,-16)
-        console.log(send_data)
+        
         // $.ajax({
         //     url: 'http://10.10.21.21/data',
         //     type: 'POST',

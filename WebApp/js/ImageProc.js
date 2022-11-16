@@ -41,9 +41,9 @@ class ImageProc {
             result[i / 4] = v > 0 ? 0 : 1
         }
 
+
         if (mode == 2) {
-            // return result.join('').match(/.{320}/g).join('\n')
-            return result.join('').match(/.{80}/g).join('\n')
+            return result.join('').match(/.{320}/g).join('\n')
         } else {
             let hex = new Array()
             let b = 0
