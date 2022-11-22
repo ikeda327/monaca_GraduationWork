@@ -18,8 +18,10 @@ $(function () {
     // let paint_ip = new ImageProc(canvas);
     var w = $('.paint-canvas').width();
     var h = $('.paint-canvas').height();
+
     $('#canvas').attr('width', w);
     $('#canvas').attr('height', h);
+
     // →移動
     // let paint_ip = new ImageProc(canvas)
 

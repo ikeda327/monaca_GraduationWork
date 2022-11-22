@@ -75,19 +75,32 @@ body {
 } */
 
 .paint-canvas {
-    margin: 2em auto;
+    width: 100%;
+    margin: 2em auto 0 auto;
+    text-align: center;
+}
+
+#canvas {
     width: 320px;
     height: 320px;
-    /* z-index: 999; */
 }
 
 canvas {
     border: 2px solid gray;
-    background-color: #fff;
+    /* background-color: #fff; */
 }
 
+/* .backimg_pan {
+    position: absolute;
+    width: 100%;
+    top: 0;
+    left: 0;
+    z-index: 1;
+    opacity: .5;
+} */
+
 .btn {
-    width: 65%;
+    width: 70%;
     margin: 2em auto 0 auto;
     display: flex;
     justify-content: space-between;
@@ -111,7 +124,11 @@ canvas {
 }
 
 .icon {
-    width: 25px;
+    width: 30px;
+}
+
+.icon-erasser {
+    width: 35px;
 }
 
 #slide-list option {
