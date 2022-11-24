@@ -6,6 +6,11 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
+    <!-- ■フォント -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <!-- <link href="https://fonts.googleapis.com/css2?family=Bad+Script&display=swap" rel="stylesheet"> -->
+
     <!-- ■スライダー用CSS -->
     <link rel="stylesheet" href="js/jquery-ui-1.7.2.custom.css" type="text/css" media="all">
     <!-- ■スライダー用JS -->
@@ -30,7 +35,7 @@
         <div class="tab_panel">
             <div class="content">
                 <p>B.Printer</p>
-                <a href="2_detail.html"><button id="push-button" onclick="">アプリの説明</button></a>
+                <button id="detail-btn" onclick=""><a href="2_detail.html">アプリの説明</a></button>
             </div>
         </div>
         <div class="tab_panel">
@@ -65,7 +70,7 @@
 
                 <div class="btn_fin">
                     <!-- <button id="btn_save">アルバムに保存</button> -->
-                    <button id="paint_finish">完成</button>
+                    <button class="paint_finish">決定</button>
                 </div>
             </div>
         </div>
@@ -73,7 +78,7 @@
             <div class="">
                 <!-- 元画像 -->
                 <div class="wrapper">
-                    <input type="file" name="" id="myimage" accept="image/*"><br>
+                    <label id="file-btn"><input type="file" name="" id="myimage" accept="image/*"></label><br>
                     <img id="photo" />
                 </div>
 
@@ -89,8 +94,8 @@
                     <button class="reload" id="reload_btn">自動</button>
                 </div>
 
-                <div class="btn_fin2">
-                    <button id="select_finish">完成</button>
+                <div class="btn_fin">
+                    <button class="paint_finish">決定</button>
                 </div>
             </div>
         </div>

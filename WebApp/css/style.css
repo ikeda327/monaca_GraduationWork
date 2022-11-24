@@ -1,7 +1,11 @@
+body, button, a {
+    color: #444;
+}
+
 body {
     margin: 0;
     padding: 0;
-    /* background-color: ; */
+    /* font-family: 'Bad Script', cursive; */
 }
 
 .body-wrapper {
@@ -58,6 +62,15 @@ body {
     text-align: center;
     margin-top: 10%;
     font-size: 50px;
+}
+
+#detail-btn {
+    line-height: 2em;
+    font-size: 16px;
+}
+
+#detail-btn a {
+    text-decoration: none;
 }
 
 /* ペイント */
@@ -132,7 +145,7 @@ canvas {
 }
 
 #slide-list option {
-    color: blue;
+    color: #f8b862;
 }
 
 .btn_fin {
@@ -141,7 +154,7 @@ canvas {
     text-align: center;
 }
 
-#paint_finish {
+.paint_finish {
     width: 100%;
     line-height: 3em;
 }
@@ -159,18 +172,19 @@ canvas {
 
 .slide {
     text-align: center;
+    margin: 1em;
 }
 
 .slider {
     -webkit-appearance: none;
     appearance: none;
     cursor: pointer;
-    background: #8acdff;
+    background: #a0d8ef;
     height: 16px;
     border-radius: 10px;
-    border: solid 2px #dff1ff;
+    border: solid 2px #fff;
     outline: 0;
-    box-shadow: 0 0 7px rgb(0, 161, 255);
+    box-shadow: 0 0 7px #2ca9e1;
 }
 
 .reload {
@@ -189,13 +203,43 @@ canvas {
     height: 300px;
 }
 
-.btn_fin2 {
+/* .btn_fin2 {
     width: 35%;
     margin: .5em auto 0 auto;
-}
+} */
 
+
+/* アプリ説明ページ */
 .detail-page {
     animation: fadein 1s forwards;
+}
+
+.detail-centence {
+    text-align: center;
+    font-size: 14px;
+    line-height: 2em;
+}
+
+header {
+    height: 4em;
+    /* border-bottom: 1px solid gray; */
+    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.05);
+}
+
+.back-btn {
+    text-decoration: none;
+    line-height: 4em;
+    font-size: 16px;
+    padding-left: .5em;
+}
+
+.detail-h {
+    text-align: center;
+    margin-top: 1.5em;
+}
+
+.detail-centence p {
+    margin: 2em 0;
 }
 
 @keyframes fadein {
