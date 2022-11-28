@@ -102,9 +102,7 @@ $(function () {
         // ip.convert()
 
         let send_data = ImageProc.toBinaryData(context.getImageData(0, 0, w, h).data, 16)
-        console.log(ImageProc.toBinaryData(context.getImageData(0, 0, w, h).data, 2))
-        // let send_data = ImageProc.toBinaryData(context.getImageData(0,0,w,h).data,-16)
-        // console.log(send_data)
+        // console.log(ImageProc.toBinaryData(context.getImageData(0, 0, w, h).data, 2))
 
         // paint_ip.refresh()
         // send_data = paint_ip.convert()
