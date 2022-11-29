@@ -46,8 +46,8 @@
                 </div>
 
                 <div class="btn">
-                    <button id="pen-button" class="paint_btn"><img src="images/pen.png" alt="" class="icon icon-pen"></button>
-                    <button id="eraser-button" class="paint_btn"><img src="images/erasser.png" alt="" class="icon icon-erasser"></button>
+                    <button id="pen-button" class="paint_btn paint-icon"><img src="images/pen.png" alt="" class="icon icon-pen"></button>
+                    <button id="eraser-button" class="paint_btn paint-icon"><img src="images/erasser.png" alt="" class="icon icon-erasser"></button>
                     <button id="clear-button" class="paint_btn">全消去</button>
                 </div>
 
@@ -78,7 +78,10 @@
             <div class="">
                 <!-- 元画像 -->
                 <div class="wrapper">
-                    <label id="file-btn"><input type="file" name="" id="myimage" accept="image/*"></label><br>
+                    <label class="file">
+                        ファイルを選択
+                        <input type="file" name="" class="file_input" id="myimage" accept="image/*">
+                    </label><br>
                     <img id="photo" />
                 </div>
 

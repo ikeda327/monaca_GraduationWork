@@ -127,6 +127,10 @@ canvas {
     background-color: #fff;
 }
 
+.paint-icon:hover {
+    border: 2px solid red;
+}
+
 .paint-slide {
     margin-top: 1em;
 }
@@ -162,6 +166,25 @@ canvas {
 /* 選択 */
 .wrapper {
     text-align: center;
+}
+
+.file_input {
+    display: none;
+}
+
+.file {
+    font-size: 12px;
+    line-height: 1.2;
+    color: #444;
+    background-color: #fff;
+    border: 2px solid #ccb591;
+    border-radius: 5px;
+    padding: 5px;
+}
+
+.file:active {
+    background-color: #ccb591;
+    color: #fff;
 }
 
 #photo {
