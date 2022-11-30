@@ -89,7 +89,7 @@ body {
 
 .paint-canvas {
     width: 100%;
-    margin: 2em auto 0 auto;
+    margin: 1.5em auto 0 auto;
     text-align: center;
 }
 
@@ -103,18 +103,9 @@ canvas {
     /* background-color: #fff; */
 }
 
-/* .backimg_pan {
-    position: absolute;
-    width: 100%;
-    top: 0;
-    left: 0;
-    z-index: 1;
-    opacity: .5;
-} */
-
 .btn {
     width: 70%;
-    margin: 2em auto 0 auto;
+    margin: 1em auto 0 auto;
     display: flex;
     justify-content: space-between;
 }
@@ -122,22 +113,34 @@ canvas {
 .paint_btn {
     text-align: center;
     padding: 10px;
-    border: 1px solid #000;
+    border: 2px solid #d7c5a9;
     border-radius: 50%;
     background-color: #fff;
 }
 
-.paint-icon:hover {
-    border: 2px solid red;
+.paint-icon.selected2 {
+    /* border: 1px solid red; */
+    background-color: #d7c5a9;
 }
 
-.paint-slide {
+.slide {
     margin-top: 1em;
+    text-align: center;
 }
 
-#paint-input {
+.paint-slider {
     width: 200px;
     height: 16px;
+}
+
+datalist {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    writing-mode: vertical-lr;
+    width: 200px;
+    margin: 0 auto;
+    font-size: 16px;
 }
 
 .icon {
@@ -146,10 +149,6 @@ canvas {
 
 .icon-erasser {
     width: 35px;
-}
-
-#slide-list option {
-    color: #f8b862;
 }
 
 .btn_fin {
