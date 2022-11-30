@@ -1,5 +1,3 @@
-// var monochrome_data;
-// var send_data;
 $(function () {
     $(window).on('touchmove.noScroll', function (e) {
         e.preventDefault();
@@ -93,14 +91,6 @@ $(function () {
 
     // ペイントから送信
     $("#paint_finish").on("click", function () {
-        // canvas.toBlob(blob => {
-        //     console.log(blob)
-        // }, 
-        // // 'image/jpeg')
-        // 'application/octet-stream')
-        // let ip = new ImageProc(canvas)
-        // ip.convert()
-
         let send_data = ImageProc.toBinaryData(context.getImageData(0, 0, w, h).data, 16)
         // console.log(ImageProc.toBinaryData(context.getImageData(0, 0, w, h).data, 2))
 
@@ -109,19 +99,19 @@ $(function () {
         // var image = new Image()
         // console.log(send_data)
 
-        // $.ajax({
-        //     url: 'http://10.10.21.21/data',
-        //     type: 'POST',
-        //     data: send_data,
-        //     processData: false,
-        //     contentType: 'text/plain',
-        //     // dataType: 'text',
-        //     success: function (data) {
-        //         // alert('OK');
-        //     },
-        //     error: function (XMLHttpRequest, textStatus, errorThrown) {
-        //         // alert('NG');
-        //     }
-        // });
+        $.ajax({
+            url: 'http://10.10.21.21/data',
+            type: 'POST',
+            data: send_data,
+            processData: false,
+            contentType: 'text/plain',
+            // dataType: 'text',
+            success: function (data) {
+                // alert('OK');
+            },
+            error: function (XMLHttpRequest, textStatus, errorThrown) {
+                // alert('NG');
+            }
+        });
     })
 })

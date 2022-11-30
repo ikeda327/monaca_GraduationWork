@@ -1,6 +1,3 @@
-// var monochrome_data;
-// var send_data;
-
 $(function () {
     let ip
     $('#myimage').on('change', async function (e) {
