@@ -85,6 +85,12 @@ body {
     width: 100%;
     margin: 1.5em auto 0 auto;
     text-align: center;
+    /* position: relative; */
+}
+
+.paint-canvas,
+.wrapper2 {
+    position: relative;
 }
 
 #canvas {
@@ -95,6 +101,19 @@ body {
 canvas {
     border: 2px solid gray;
     /* background-color: #fff; */
+    /* position: relative; */
+}
+
+.qr {
+    position: absolute;
+    right: 20px;
+    bottom: 5px;
+    border: 1px solid #fff;
+}
+
+.qr2 {
+    right: 35px;
+    bottom: 2px;
 }
 
 .btn {

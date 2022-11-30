@@ -17,6 +17,8 @@
     <script type="text/javascript" src="js/jquery-ui-1.7.2.custom.min.js"></script>
 
     <script src="js/jquery-3.6.1.min.js"></script>
+    <script src="js/jquery.qrcode.min.js"></script>
+
     <script src="js/ImageProc.js"></script>
     <script src="js/paint-page.js"></script>
     <script src="js/image_select-page.js"></script>
@@ -43,16 +45,20 @@
                 <div class="paint-canvas">
                     <!-- <img src="./images/back_pan.png" alt="" class="backimg_pan"> -->
                     <canvas id="canvas"></canvas>
+                    <div class="qr"></div>
                 </div>
 
                 <div class="btn">
-                    <button id="pen-button" class="paint_btn paint-icon selected2"><img src="images/pen.png" alt="" class="icon icon-pen"></button>
-                    <button id="eraser-button" class="paint_btn paint-icon"><img src="images/erasser.png" alt="" class="icon icon-erasser"></button>
+                    <button id="pen-button" class="paint_btn paint-icon selected2"><img src="images/pen.png" alt=""
+                            class="icon icon-pen"></button>
+                    <button id="eraser-button" class="paint_btn paint-icon"><img src="images/erasser.png" alt=""
+                            class="icon icon-erasser"></button>
                     <button id="clear-button" class="paint_btn">全消去</button>
                 </div>
 
                 <div class="slide">
-                    <input type="range" id="paint-input" class="paint-slider" min="1" max="10" step="1" list="slide-list">
+                    <input type="range" id="paint-input" class="paint-slider" min="1" max="10" step="1"
+                        list="slide-list">
                     <datalist id="slide-list">
                         <option value="1" label="細"></option>
                         <option value="2"></option>
@@ -64,7 +70,7 @@
                         <option value="8"></option>
                         <option value="9"></option>
                         <option value="10" label="太"></option>
-                      </datalist>
+                    </datalist>
                 </div>
 
 
@@ -88,6 +94,7 @@
                 <!-- 白黒画像 -->
                 <div class="wrapper2">
                     <canvas id="dst"></canvas>
+                    <div class="qr qr2"></div>
                 </div>
 
                 <!-- 調節スライドバー -->

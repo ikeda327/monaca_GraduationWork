@@ -25,6 +25,14 @@ $(function () {
         $(this).parent().addClass('selected');
     });
 
+    // QRコード
+    $('.qr').qrcode({
+        // render: "canvas",
+        width: 50,
+        height: 50,
+        text: "this is test."
+    });
+
     // ペイントページ
     // ツールボタン
     $('.paint-icon').click(function () {
