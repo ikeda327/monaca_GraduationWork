@@ -65,8 +65,15 @@ body {
 }
 
 #detail-btn {
+    background: #FFF;
+    border: 0 solid #d7c5a9;
+    box-shadow: 0 5px 7px -2px #d7c5a9, 0 3px 5px -2px #d7c5a9;
+    height: 3em;
     line-height: 2em;
     font-size: 16px;
+    padding: 10px;
+    border-radius: 8px;
+    -webkit-tap-highlight-color:rgba(0,0,0,0);
 }
 
 #detail-btn a {
@@ -74,19 +81,6 @@ body {
 }
 
 /* ペイント */
-/* .paint-page {
-    position: relative;
-    overflow: hidden;
-}
-
-.paint-img {
-    position: absolute;
-    opacity: .5;
-    top: 0;
-    width: 100%;
-    z-index: 1;
-} */
-
 .paint-canvas {
     width: 100%;
     margin: 1.5em auto 0 auto;
@@ -160,6 +154,18 @@ datalist {
 .finish_btn {
     width: 100%;
     line-height: 3em;
+    font-size: 16px;
+    font-weight: 700;
+
+    background-color: #fff;
+    border: 2px solid #d7c5a9;
+    border-bottom: 7px solid #b79662;
+    border-radius: 0.3rem;
+}
+
+.finish_btn:active {
+    margin-top: 5px;
+	border-bottom: 2px solid #b79662;
 }
 
 /* 選択 */
@@ -176,7 +182,7 @@ datalist {
     line-height: 1.2;
     color: #444;
     background-color: #fff;
-    border: 2px solid #ccb591;
+    border: 1px solid #ccb591;
     border-radius: 5px;
     padding: 5px;
 }
