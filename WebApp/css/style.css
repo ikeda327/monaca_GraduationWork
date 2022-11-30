@@ -73,7 +73,7 @@ body {
     font-size: 16px;
     padding: 10px;
     border-radius: 8px;
-    -webkit-tap-highlight-color:rgba(0,0,0,0);
+    -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
 }
 
 #detail-btn a {
@@ -165,7 +165,7 @@ datalist {
 
 .finish_btn:active {
     margin-top: 5px;
-	border-bottom: 2px solid #b79662;
+    border-bottom: 2px solid #b79662;
 }
 
 /* 選択 */
