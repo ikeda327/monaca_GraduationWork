@@ -1,7 +1,7 @@
 /**
  * 
  */
-class ImageProc {
+ class ImageProc {
     /**
      * RGB → モノクローム変換式
      * @param {Number} r 
@@ -41,10 +41,9 @@ class ImageProc {
             result[i / 4] = v > 0 ? 0 : 1
         }
 
-
-        if (mode == 2) {
+        if (mode == 2){
             return result.join('').match(/.{320}/g).join('\n')
-        } else {
+        }else{
             let hex = new Array()
             let b = 0
             for (let i = 0; i < result.length; i++) {
@@ -55,7 +54,6 @@ class ImageProc {
                 b <<= 1
                 b += result[i]
             }
-            hex.push(b.toString(16).padStart(2, '0'))
             if (mode == 16) {
                 // return hex.join('').match(/.{80}/g).join('\n')
                 // return hex
@@ -141,7 +139,7 @@ class ImageProc {
         }
     }
 
-    get data() {
+    get data(){
         return this.#src.data
     }
 

@@ -50,29 +50,26 @@ $(function () {
 
     // 画像選択から送信
     $("#select_finish").on("click", function () {
-        // console.log(monochrome_data);
-        console.log("click")
-
         console.log(ImageProc.toBinaryData(ip.data,2))
         let send_data = ImageProc.toBinaryData(ip.data, 16)
 
         // console.log(send_data)
         // let send_data = ImageProc.toBinaryData(ip.data,-16)
         
-        // $.ajax({
-        //     url: 'http://10.10.21.21/data',
-        //     type: 'POST',
-        //     // data: {data:monochrome_data},
-        //     // data: monochrome_data.copyWithin(0,10).join('\n'),
-        //     data: send_data,
-        //     processData: false,
-        //     contentType: 'text/plain',
-        //     // dataType: 'text',
-        //     success: function (data) {
-        //     },
-        //     error: function (XMLHttpRequest, textStatus, errorThrown) {
-        //     }
-        // });
+        $.ajax({
+            url: '/data',
+            type: 'POST',
+            // data: {data:monochrome_data},
+            // data: monochrome_data.copyWithin(0,10).join('\n'),
+            data: {'send_data':send_data},
+            // processData: false,
+            // contentType: 'text/plain',
+            dataType: 'text',
+            success: function (data) {
+            },
+            error: function (XMLHttpRequest, textStatus, errorThrown) {
+            }
+        });
     })
 
 });

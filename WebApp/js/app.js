@@ -28,8 +28,8 @@ $(function () {
     // QRコード
     $('.qr').qrcode({
         // render: "canvas",
-        width: 50,
-        height: 50,
+        width: 70,
+        height: 70,
         text: "this is test."
     });
 

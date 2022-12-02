@@ -91,25 +91,20 @@ $(function () {
 
     // ペイントから送信
     $("#paint_finish").on("click", function () {
+        console.log(ImageProc.toBinaryData(context.getImageData(0, 0, w, h).data, 2))
         let send_data = ImageProc.toBinaryData(context.getImageData(0, 0, w, h).data, 16)
-        // console.log(ImageProc.toBinaryData(context.getImageData(0, 0, w, h).data, 2))
 
-        // paint_ip.refresh()
-        // send_data = paint_ip.convert()
-        // var image = new Image()
-        // console.log(send_data)
-
-        // $.ajax({
-        //     url: 'http://10.10.21.21/data',
-        //     type: 'POST',
-        //     data: send_data,
-        //     processData: false,
-        //     contentType: 'text/plain',
-        //     // dataType: 'text',
-        //     success: function (data) {
-        //     },
-        //     error: function (XMLHttpRequest, textStatus, errorThrown) {
-        //     }
-        // });
+        $.ajax({
+            url: '/data',
+            type: 'POST',
+            data: {'send_data':send_data},
+            // processData: false,
+            // contentType: 'text/plain',
+            dataType: 'text',
+            success: function (data) {
+            },
+            error: function (XMLHttpRequest, textStatus, errorThrown) {
+            }
+        });
     })
 })
