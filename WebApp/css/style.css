@@ -1,5 +1,6 @@
 body, button, a {
     color: #555;
+    font-family: "M PLUS Rounded 1c";
 }
 
 body {
@@ -81,9 +82,28 @@ body {
 }
 
 /* ペイント */
+.paint-yajirusi {
+    width: 90%;
+    margin: 0.3em auto;
+    display: flex;
+    justify-content: space-between;
+}
+
+.paint-yajirusi button {
+    background-color: #fff;
+    border: 2px solid #d7c5a9;
+    border-radius: 5pxq1    ;
+}
+
+.paint-yajirusi img {
+    width: 30px;
+    height: 30px;
+}
+
 .paint-canvas {
-    width: 100%;
-    margin: 1.5em auto 0 auto;
+     width: 320px;
+    height: 320px;
+    margin: 0em auto 0 auto;
     text-align: center;
     /* position: relative; */
 }
@@ -93,10 +113,10 @@ body {
     position: relative;
 }
 
-#canvas {
+/* #canvas {
     width: 320px;
     height: 320px;
-}
+} */
 
 canvas {
     border: 2px solid gray;
@@ -106,8 +126,8 @@ canvas {
 
 .qr {
     position: absolute;
-    right: 20px;
-    bottom: 5px;
+    right: 5px;
+    bottom: 2px;
     border: 1px solid #fff;
 }
 
@@ -156,6 +176,10 @@ datalist {
     font-size: 16px;
 }
 
+.label {
+    color: #9a702d;
+}
+
 .icon {
     width: 30px;
 }
@@ -196,7 +220,8 @@ datalist {
     display: none;
 }
 
-.file {
+.file,
+#reload_btn {
     font-size: 12px;
     line-height: 1.2;
     color: #444;
@@ -250,10 +275,6 @@ datalist {
     height: 300px;
 }
 
-/* .btn_fin2 {
-    width: 35%;
-    margin: .5em auto 0 auto;
-} */
 
 
 /* アプリ説明ページ */
