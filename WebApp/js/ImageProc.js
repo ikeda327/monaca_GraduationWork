@@ -42,7 +42,8 @@
         }
 
         if (mode == 2){
-            return result.join('').match(/.{320}/g).join('\n')
+            return result.join('')
+            // return result.join('').match(/.{320}/g).join('\n')
         }else{
             let hex = new Array()
             let b = 0
@@ -55,8 +56,6 @@
                 b += result[i]
             }
             if (mode == 16) {
-                // return hex.join('').match(/.{80}/g).join('\n')
-                // return hex
                 return hex.join('')
             } else {
                 return '0x' + hex.join(',0x') + ','

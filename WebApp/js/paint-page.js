@@ -20,9 +20,6 @@ $(function () {
     $('#canvas').attr('width', w);
     $('#canvas').attr('height', h);
 
-    // →移動
-    // let paint_ip = new ImageProc(canvas)
-
     //デフォルトのペン太さ
     let MY_BURASISIZE = 6;
 
@@ -97,7 +94,6 @@ $(function () {
     var imageMemory = new Array(11); // キャンバスのイメージの保存用配列
     var flagMemory = 0; // 現在のキャンバスの番号
     // $('#backBtn, #forwardBtn').attr('disabled', true);
-    // 現在のキャンバス状態を保存
     function saveImageData() {
         // 現在の状態を保存
         if (flagMemory == imageMemory.length - 1) {
@@ -138,7 +134,6 @@ $(function () {
                 $('#forwardBtn').attr('disabled', true);
             }
         }
-
     });
 
     // ペイントから送信
