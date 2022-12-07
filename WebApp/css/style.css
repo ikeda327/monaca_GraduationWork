@@ -11,16 +11,12 @@ body {
 .body-wrapper {
     /* margin: 5px; */
     height: 110vh;
-    /* かわいいやつ */
-    /* background-image: url("https://pics.prcm.jp/01c070697f040/55797990/jpeg/55797990.jpeg"); */
-    /* 店の棚 */
-    /* background-image: url("https://www.photolibrary.jp/mhd7/img335/450-20140401134911221284.jpg"); */
-    /* シックなやつ */
-    /* background-image: url("https://thumb.ac-illust.com/5e/5e8f34d3f11c785f51c1d14df6915511_t.jpeg"); */
-    background-image: url(../images/sick.png);
+    background-image: url(../images/backImg1.png);
+    /* background-image: url(../images/backImg2.png);
+    background-image: url(../images/backImg3.png);
+    background-image: url(../images/backImg4.png); */
     background-repeat:repeat-y;
-    background-size: 100%;
-    /* opacity: .5; */
+    background-size: 150%;
 }
 
 #tab_menu {
