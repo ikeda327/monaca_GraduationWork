@@ -16,6 +16,7 @@ body {
     background-image: url(../images/backImg3.png);
     background-image: url(../images/backImg4.png); */
     background-repeat:repeat-y;
+    background-position: center center;
     background-size: 150%;
 }
 
