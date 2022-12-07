@@ -36,7 +36,7 @@
             <li id="tab3"><a href="#tab03">画像選択</a></li>
         </ul>
         <div class="tab_panel">
-            <div class="content">
+            <div class="top-page">
                 <p>B.Printer</p>
                 <button id="detail-btn" onclick=""><a href="2_detail.html">アプリの説明</a></button>
             </div>
@@ -49,6 +49,7 @@
                 </div>
 
                 <div class="paint-canvas">
+                    <!-- <img src="./images/pan_back.png" alt="" class="back-pan"> -->
                     <canvas id="canvas"></canvas>
                     <div class="qr"></div>
                 </div>
@@ -61,7 +62,7 @@
                     <button id="clear-button" class="paint_btn">全消去</button>
                 </div>
 
-                <div class="slide">
+                <div class="slide1">
                     <input type="range" id="paint-input" class="paint-slider" min="1" max="10" step="1"
                         list="slide-list">
                     <datalist id="slide-list">
@@ -78,7 +79,6 @@
                     </datalist>
                 </div>
 
-
                 <div class="btn_fin">
                     <!-- <button id="btn_save">アルバムに保存</button> -->
                     <button class="finish_btn" id="paint_finish">決定</button>
@@ -86,14 +86,14 @@
             </div>
         </div>
         <div class="tab_panel">
-            <div class="">
+            <div class="select-page">
                 <!-- 元画像 -->
                 <div class="wrapper">
                     <label class="file">
                         ファイルを選択
                         <input type="file" name="" class="file_input" id="myimage" accept="image/*">
                     </label><br>
-                    <img id="photo" />
+                    <!-- <img id="photo" /> -->
                 </div>
 
                 <!-- 白黒画像 -->
@@ -103,7 +103,7 @@
                 </div>
 
                 <!-- 調節スライドバー -->
-                <div class="slide">
+                <div class="slide2">
                     <input type="range" id="input" class="slider" value="" min="0" max="255" step="2">
                     <label class="value">0</label>
                     <button class="reload" id="reload_btn">自動</button>

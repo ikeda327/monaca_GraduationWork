@@ -42,8 +42,8 @@
         }
 
         if (mode == 2){
-            return result.join('')
-            // return result.join('').match(/.{320}/g).join('\n')
+            // return result.join('')
+            return result.join('').match(/.{320}/g).join('\n')
         }else{
             let hex = new Array()
             let b = 0

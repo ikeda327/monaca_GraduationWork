@@ -1,7 +1,7 @@
 $(function () {
     let ip
     $('#myimage').on('change', async function (e) {
-        // input='file' で選択した画像をプレビューに表示
+        // 選択した画像をプレビューに表示
         var reader = new FileReader();
         reader.onload = function (e) {
             $("#photo").attr('src', e.target.result);
@@ -50,7 +50,8 @@ $(function () {
 
     // 画像選択から送信
     $("#select_finish").on("click", function () {
-        // QRcode.getPosition()
+        // let qr = new  QRcode()
+        // qr.getPosition()        
 
         console.log(ImageProc.toBinaryData(ip.data, 2))
         let send_data = ImageProc.toBinaryData(ip.data, 16)

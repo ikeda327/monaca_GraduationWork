@@ -9,8 +9,18 @@ body {
 }
 
 .body-wrapper {
-    margin: 10px;
-    /* height: 100vh; */
+    /* margin: 5px; */
+    height: 110vh;
+    /* かわいいやつ */
+    /* background-image: url("https://pics.prcm.jp/01c070697f040/55797990/jpeg/55797990.jpeg"); */
+    /* 店の棚 */
+    /* background-image: url("https://www.photolibrary.jp/mhd7/img335/450-20140401134911221284.jpg"); */
+    /* シックなやつ */
+    /* background-image: url("https://thumb.ac-illust.com/5e/5e8f34d3f11c785f51c1d14df6915511_t.jpeg"); */
+    background-image: url(../images/sick.png);
+    background-repeat:repeat-y;
+    background-size: 100%;
+    /* opacity: .5; */
 }
 
 #tab_menu {
@@ -24,10 +34,11 @@ body {
 #tab_menu li {
     width: 33.333%;
     padding: 0;
-    margin: 0 1px 0 0;
+    margin: 0;
     text-align: center;
     list-style: none;
-    background: #ccb591;
+    background: #f7b45c;
+    border: 1px solid #fff;
 }
 
 #tab_menu li:last-child {
@@ -35,11 +46,11 @@ body {
 }
 
 #tab_menu li.selected {
-    background: #b79662;
+    background: #f99411;
 }
 
 #tab_menu li:hover {
-    background: #b79662;
+    background: #f99411;
 }
 
 #tab_menu li a {
@@ -58,16 +69,25 @@ body {
     padding: 13.5px .4em 13.5px 0;
 }
 
-.content {
+/* トップページ */
+.top-page {
     text-align: center;
     margin-top: 10%;
     font-size: 50px;
 }
 
+.top-page p {
+    background-color: #fff;
+    border: 1px solid #fff;
+    border-radius: 10px;
+    width: 250px;
+    margin: 0 auto;
+}
+
 #detail-btn {
     background: #FFF;
-    border: 0 solid #d7c5a9;
-    box-shadow: 0 5px 7px -2px #d7c5a9, 0 3px 5px -2px #d7c5a9;
+    border: 0 solid #f7b45c;
+    box-shadow: 0 5px 7px -2px #f7b45c, 0 3px 5px -2px #f7b45c;
     height: 3em;
     line-height: 2em;
     font-size: 16px;
@@ -81,6 +101,16 @@ body {
 }
 
 /* ペイント */
+.paint-page {
+    /* overflow: hidden; */
+    background-image: url(../images/pan_back.png);
+    background-size: 104%;
+    background-position-x: center;
+    background-position-y: 15%;
+    background-repeat: no-repeat;
+    /* opacity: .9; */
+}
+
 .paint-yajirusi {
     width: 90%;
     margin: 0.3em auto;
@@ -89,8 +119,9 @@ body {
 }
 
 .paint-yajirusi button {
+    padding: 0 2em;
     background-color: #fff;
-    border: 2px solid #d7c5a9;
+    border: 2px solid #f7b45c;
     border-radius: 5px;
 }
 
@@ -100,11 +131,21 @@ body {
 }
 
 .paint-canvas {
-     width: 320px;
+    position: relative;
+    width: 320px;
     height: 320px;
-    margin: 0em auto 0 auto;
+    margin: 1em auto 0 auto;
     text-align: center;
 }
+
+/* .back-pan {
+    position: absolute;
+    width: 120%;
+    opacity: .5;
+    top: -7%;
+    left: -10%;
+    z-index: 1;
+} */
 
 .paint-canvas,
 .wrapper2 {
@@ -112,7 +153,7 @@ body {
 }
 
 canvas {
-    border: 2px solid gray;
+    border: 1px solid #444;
 }
 
 .qr {
@@ -130,7 +171,7 @@ canvas {
 
 .btn {
     width: 70%;
-    margin: 1em auto 0 auto;
+    margin: 4em auto 0 auto;
     display: flex;
     justify-content: space-between;
 }
@@ -138,16 +179,16 @@ canvas {
 .paint_btn {
     text-align: center;
     padding: 10px;
-    border: 2px solid #d7c5a9;
+    border: 2px solid #f7b45c;
     border-radius: 50%;
     background-color: #fff;
 }
 
 .paint-icon.selected2 {
-    background-color: #d7c5a9;
+    background-color: #f7b45c;
 }
 
-.slide {
+.slide1 {
     margin-top: 1em;
     text-align: center;
 }
@@ -164,11 +205,11 @@ datalist {
     writing-mode: vertical-lr;
     width: 200px;
     margin: 0 auto;
-    font-size: 16px;
+    font-size: 14px;
 }
 
 .label {
-    color: #9a702d;
+    color: #ea9526;
 }
 
 .icon {
@@ -181,7 +222,7 @@ datalist {
 
 .btn_fin {
     width: 65%;
-    margin: 1.5em auto 0 auto;
+    margin: 1em auto 0 auto;
     text-align: center;
 }
 
@@ -190,21 +231,30 @@ datalist {
     line-height: 3em;
     font-size: 16px;
     font-weight: 700;
-
     background-color: #fff;
-    border: 2px solid #d7c5a9;
-    border-bottom: 7px solid #b79662;
+    border: 2px solid #fec375;
+    border-bottom: 7px solid #f7b45c;
     border-radius: 0.3rem;
 }
 
 .finish_btn:active {
     margin-top: 5px;
-    border-bottom: 2px solid #b79662;
+    border-bottom: 2px solid #f7b45c;
 }
 
 /* 選択 */
+.select-page {
+    background-image: url(../images/pan_back.png);
+    background-repeat: no-repeat;
+    background-size: 103%;
+    background-position-x: center;
+    background-position-y: 27%;
+    /* opacity: .9; */
+}
+
 .wrapper {
     text-align: center;
+    margin-bottom: 3em;
 }
 
 .file_input {
@@ -217,13 +267,13 @@ datalist {
     line-height: 1.2;
     color: #444;
     background-color: #fff;
-    border: 1px solid #ccb591;
+    border: 2px solid #f7b45c;
     border-radius: 5px;
     padding: 5px;
 }
 
 .file:active {
-    background-color: #ccb591;
+    background-color: #f7b45c;
     color: #fff;
 }
 
@@ -233,9 +283,9 @@ datalist {
     margin-top: 1em;
 }
 
-.slide {
+.slide2 {
     text-align: center;
-    margin: 1em;
+    margin: 5em 1em 1em 1em;
 }
 
 .slider {
@@ -256,7 +306,6 @@ datalist {
 
 #dst,
 #src {
-    border: solid 1px gray;
     display: block;
     margin: 5px auto;
 }

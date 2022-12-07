@@ -75,14 +75,14 @@ $(function () {
     }
     // ペン
     $("#pen-button").on("click ", function () {
+        context.globalCompositeOperation = 'source-over';
         context.strokeStyle = "#000";
         // context.lineWidth = "5"
         context.lineWidth = MY_BURASISIZE;
     });
     // 消しゴム
     $("#eraser-button").on("click ", function () {
-        context.strokeStyle = "#fff";
-        // context.lineWidth = "10";       
+        context.globalCompositeOperation = 'destination-out';  
         context.lineWidth = MY_BURASISIZE;
 
     });
