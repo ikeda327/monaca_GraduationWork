@@ -1,13 +1,4 @@
 $(function () {
-    // 背景画像
-    var images = ['url(./images/backImg1.png)', 'url(./images/backImg2.png)', 'url(./images/backImg3.png)', 'url(./images/backImg4.png)']; // ランダム表示させたい画像のパス
-    var backgroundRandom = function () {
-        var number = Math.floor(Math.random() * images.length); // 0~3の数値を算出 
-        var selectedImg = images[number]; // 算出された数値を元に、1行目の配列から取り出す
-        $('.body-wrapper').css('background-image', selectedImg); // cssにランダムに選ばれた画像を背景設定する
-    };
-    setInterval(backgroundRandom, 3000); // 1000msごとにランダム切り替えを繰り返す
-
     // メニュータブ
     $('.tab_panel').css('display', 'none');
     var hash = location.hash;

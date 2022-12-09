@@ -48,10 +48,26 @@ $(function () {
         // ip.threshold = ip.calcThreshold()    計算したしきい値を指定する
     });
 
+    function getQrPosition() {
+        let w = 70;
+        let h = 70;
+        // QRコード生成
+        $('.qr').qrcode({
+            // render: "canvas",
+            width: w,
+            height: h,
+            text: "this is test."
+        });
+
+        var qr_canvas = $(".qr canvas");
+        console.log(qr_canvas);
+        var qr_context = qr_canvas[1].getContext("2d");
+        console.log(ImageProc.toBinaryData(qr_context.getImageData(0, 0, w, h).data, 2));
+    };
+
     // 画像選択から送信
     $("#select_finish").on("click", function () {
-        // let qr = new  QRcode()
-        // qr.getPosition()        
+        getQrPosition();
 
         console.log(ImageProc.toBinaryData(ip.data, 2))
         let send_data = ImageProc.toBinaryData(ip.data, 16)

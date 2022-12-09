@@ -15,7 +15,7 @@ body {
     /* background-image: url(../images/backImg2.png);
     background-image: url(../images/backImg3.png);
     background-image: url(../images/backImg4.png); */
-    background-repeat:repeat-y;
+    background-repeat: repeat-y;
     background-position: center center;
     background-size: 150%;
 }
@@ -158,7 +158,7 @@ canvas {
     right: 5px;
     bottom: 2px;
     border: 1px solid #fff;
-    display: none;
+    /* display: none; */
 }
 
 .qr2 {
