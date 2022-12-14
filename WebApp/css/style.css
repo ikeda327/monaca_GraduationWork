@@ -155,15 +155,15 @@ canvas {
 
 .qr {
     position: absolute;
-    right: 0;
-    bottom: -10px;
+    right: -2px;
+    bottom: -8px;
     border: 1px solid #fff;
     /* display: none; */
 }
 
 .qr2 {
-    right: 39px;
-    bottom: 0;
+    right: 37px;
+    bottom: -5px;
 }
 
 .btn {

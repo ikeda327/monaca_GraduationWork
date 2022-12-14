@@ -82,7 +82,7 @@ $(function () {
     });
     // 消しゴム
     $("#eraser-button").on("click ", function () {
-        context.globalCompositeOperation = 'destination-out';  
+        context.globalCompositeOperation = 'destination-out';
         context.lineWidth = MY_BURASISIZE;
 
     });
@@ -138,10 +138,18 @@ $(function () {
 
     // ペイントから送信
     $("#paint_finish").on("click", function () {
-        getQrPosition()
+        let canvasdata = (ImageProc.toBinaryData(context.getImageData(0, 0, w, h).data, 2))
+        // canvasdata = canvasdata.replace(/\r?\n/g, "")
+        canvasdata = canvasdata.split('')
 
-        console.log(ImageProc.toBinaryData(context.getImageData(0, 0, w, h).data, 2))
-        let send_data = ImageProc.toBinaryData(context.getImageData(0, 0, w, h).data, 16)
+        // QR埋め込み済画像 配列で返ってくる
+        alldata = getQrPosition(canvasdata)
+        // console.log(alldata.join('').match(/.{320}/g).join('\n'))
+        // console.log(alldata)
+
+        // １６進数に変換
+        let send_data = (ImageProc.toBinaryData(alldata, 16))
+        console.log(send_data)
 
         $.ajax({
             url: '/data',
