@@ -17,12 +17,12 @@ function getQrPosition(canvasdata) {
     // console.log(qrdata.match(/.{80}/g).join('\n'))
 
     qrdata = qrdata.split('')
-    // console.log(qrdata )
+    // console.log(qrdata)
 
 
     for (let qy = 0; qy < 80; qy++) {
         for (let qx = 0; qx < 80; qx++) {
-            canvasdata[320 * (241 + qy) + 241 + qx] = qrdata[80 * qy + qx]
+            canvasdata[(320 * (240 + qy)) + (240 + qx)] = qrdata[80 * qy + qx]
         }
     }
     return canvasdata
