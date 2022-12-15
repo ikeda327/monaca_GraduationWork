@@ -6,17 +6,13 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <!-- ■フォント -->
+    <!-- フォント -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css?family=M+PLUS+Rounded+1c" rel="stylesheet">
 
-    <!-- ■スライダー用CSS -->
-    <link rel="stylesheet" href="js/jquery-ui-1.7.2.custom.css" type="text/css" media="all">
-    <!-- ■スライダー用JS -->
-    <script type="text/javascript" src="js/jquery-ui-1.7.2.custom.min.js"></script>
-
     <script src="js/jquery-3.6.1.min.js"></script>
+    <!-- QRコード生成 JS -->
     <script src="js/jquery.qrcode.min.js"></script>
 
     <script src="js/ImageProc.js"></script>
@@ -25,6 +21,7 @@
     <script src="js/app.js"></script>
     <script src="js/QRcode.js"></script>
     <link rel="stylesheet" href="css/style.css">
+
     <title>トップページ</title>
 </head>
 
@@ -79,17 +76,23 @@
                     </datalist>
                 </div>
 
-                <div class="btn_fin">
-                    <!-- <button id="btn_save">アルバムに保存</button> -->
+                <!-- <div class="btn_fin">
                     <button class="finish_btn" id="paint_finish">決定</button>
-                    <!-- <a href="#popup" data-rel="popup">jQuery Mobile</a> -->
+                    <a href="#popup" data-rel="popup">決定</a>
                 </div>
 
-                <!-- <div id="popup" data-role="popup">
-                    <p>jQuery
-                        Mobileは、Android、iOS、主要なデスクトップブラウザーなど、代表的な環境に対応したモバイルアプリ開発のためのライブラリです。jQueryとの親和性に優れ、ウィジェットが豊富に用意されているのが特徴です。
+                <div id="popup" data-role="popup">
+                    <p>送信しますか？
                     </p>
                 </div> -->
+
+                <div role="main" class="ui-content">
+                    <p><a href="#pop1" data-rel="popup">ポップアップを表示 &raquo;</a></p>
+                    <div data-role="popup" id="pop1">
+                        <p>ポップアップでのメッセージ</p>
+                    </div>
+                </div>
+
             </div>
         </div>
         <div class="tab_panel">
