@@ -39,9 +39,3 @@ $(function () {
         $(".popup").removeClass('view');
     });
 })
-
-// function chgImg() {
-//     var png = canvas.toDataURL();
-
-//     document.getElementById("newImg").src = png;
-// }

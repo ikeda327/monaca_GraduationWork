@@ -80,80 +80,80 @@
                 </div>
 
                 <div class="btn_fin">
-                    <button class="finish_btn open" id="paint_finish" onclick="chgImg1()">決定</button>
+                    <button class="finish_btn open" onclick="chgImg1()">決定</button>
                 </div>
 
-                <!-- <div class="popup">
+                <div class="popup">
                     <div class="popup__inner">
                         <div class="popup__title">送信する画像を決定しますか？</div>
                         <div class="popup__body">
                             <div class="img-box"><img id="newImg1"></div>
-                            <p>※画像を保存する場合は長押ししてください</p>
+                            <p>
+                                ※画像を保存する場合は長押ししてください<br>
+                                ※右下にQRコードが生成されます<br>
+                                ※送信後、ペイントした画像をクリアします
+                            </p>
                             <div>
                                 <button class="close">閉じる</button>
-                                <button>送信</button>
-                            </div>
-
-                        </div>
-                    </div>
-
-                    <button type="button" onclick="chgImg1()" value="1">保存</button>
-                    <h2>画像出力</h2>
-                    <div id="img-box"><img id="newImg1"></div>
-
-                </div> -->
-            </div>
-            <div class="tab_panel">
-                <div class="select-page">
-                    <!-- 元画像 -->
-                    <div class="wrapper">
-                        <label class="file">
-                            ファイルを選択
-                            <input type="file" name="" class="file_input" id="myimage" accept="image/*">
-                        </label><br>
-                        <!-- <img id="photo" /> -->
-                    </div>
-
-                    <!-- 白黒画像 -->
-                    <div class="wrapper2">
-                        <canvas id="dst"></canvas>
-                        <div class="qr qr2"></div>
-                    </div>
-
-                    <!-- 調節スライドバー -->
-                    <div class="slide2">
-                        <input type="range" id="input" class="slider" value="" min="0" max="255" step="2">
-                        <label class="value">0</label>
-                        <button class="reload" id="reload_btn">自動</button>
-                    </div>
-
-                    <div class="btn_fin">
-                        <button class="finish_btn" id="select_finish">決定</button>
-                    </div>
-
-                    <!-- <div class="popup">
-                        <div class="popup__inner">
-                            <div class="popup__title">送信する画像を決定しますか？</div>
-                            <div class="popup__body">
-                                <div class="img-box"><img id="newImg1"></div>
-                                <p>※画像を保存する場合は長押ししてください</p>
-                                <div>
-                                    <button class="close">閉じる</button>
-                                    <button>送信</button>
-                                </div>
-    
+                                <button id="paint_finish">送信</button>
                             </div>
                         </div>
-    
-                        <button type="button" onclick="chgImg1()" value="1">保存</button>
-                        <h2>画像出力</h2>
-                        <div class="img-box"><img id="newImg2"></div>
-    
-                    </div> -->
-
+                    </div>
                 </div>
+
             </div>
         </div>
+
+
+        <div class="tab_panel">
+            <div class="select-page">
+                <!-- 元画像 -->
+                <div class="wrapper">
+                    <label class="file">
+                        ファイルを選択
+                        <input type="file" name="" class="file_input" id="myimage" accept="image/*">
+                    </label><br>
+                    <!-- <img id="photo" /> -->
+                </div>
+
+                <!-- 白黒画像 -->
+                <div class="wrapper2">
+                    <canvas id="dst"></canvas>
+                    <div class="qr qr2"></div>
+                </div>
+
+                <!-- 調節スライドバー -->
+                <div class="slide2">
+                    <input type="range" id="input" class="slider" value="" min="0" max="255" step="2">
+                    <label class="value">0</label>
+                    <button class="reload" id="reload_btn">自動</button>
+                </div>
+
+                <div class="btn_fin">
+                    <button class="finish_btn open" onclick="chgImg2()">決定</button>
+                </div>
+
+                <div class="popup">
+                    <div class="popup__inner">
+                        <div class="popup__title">送信する画像を決定しますか？</div>
+                        <div class="popup__body">
+                            <div class="img-box"><img id="newImg2"></div>
+                            <p>
+                                ※画像を保存する場合は長押ししてください<br>
+                                ※右下にQRコードが生成されます<br>
+                                ※送信後、選択した画像をリセットします
+                            </p>
+                            <div>
+                                <button class="close">閉じる</button>
+                                <button id="select_finish">送信</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
 
     </div>
 </body>

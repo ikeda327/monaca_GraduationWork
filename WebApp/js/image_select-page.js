@@ -49,7 +49,7 @@ $(function () {
     });
 
     // 画像選択から送信
-    $("#select_finish").on("click", function () {
+    $("#select_finish").on("click", function (e) {
         let canvasdata = (ImageProc.toBinaryData(ip.data, 2))
         canvasdata = canvasdata.split('')
         let data = getQrPosition(canvasdata)
@@ -57,7 +57,7 @@ $(function () {
         console.log(data.join('').match(/.{320}/g).join('\n'))
         // console.log(data)
 
-        let send_data = ImageProc.toBinaryData(canvasdata, 16)
+        let send_data = ImageProc.hex(canvasdata)
         console.log(send_data)
 
         $.ajax({
@@ -73,11 +73,9 @@ $(function () {
             error: function (XMLHttpRequest, textStatus, errorThrown) {}
         });
     })
-
 });
 
 function chgImg2() {
     var png = dst.toDataURL();
-
     document.getElementById("newImg2").src = png;
 }

@@ -1,7 +1,7 @@
 /**
  * 
  */
- class ImageProc {
+class ImageProc {
     /**
      * RGB → モノクローム変換式
      * @param {Number} r 
@@ -20,7 +20,7 @@
      */
     static toBinaryData(data, mode = 2) {
         let result = new Array(data.length / 4)
-        //
+
         for (let i = 0; i < data.length; i += 4) {
             let v = ImageProc.grayscale(data[i], data[i + 1], data[i + 2])
             if (data[i + 3] < 255) {
@@ -41,20 +41,19 @@
             result[i / 4] = v > 0 ? 0 : 1
         }
 
-        if (mode == 2){
+        if (mode == 2) {
             return result.join('')
-            // return result.join('').match(/.{320}/g).join('\n')
-        }else{
-            let hex = new Array()
-            let b = 0
-            for (let i = 0; i < result.length; i++) {
-                if (i % 8 == 0 && i > 0) {
-                    hex.push(b.toString(16).padStart(2, '0'))
-                    b = 0
-                }
-                b <<= 1
-                b += result[i]
-            }
+        } else {
+            // let hex = new Array()
+            // let b = 0
+            // for (let i = 0; i < result.length; i++) {
+            //     if (i % 8 == 0 && i > 0) {
+            //         hex.push(b.toString(16).padStart(2, '0'))
+            //         b = 0
+            //     }
+            //     b <<= 1
+            //     b += result[i]
+            // }
             if (mode == 16) {
                 return hex.join('')
             } else {
@@ -62,6 +61,22 @@
             }
         }
     }
+
+    static hex(data) {
+        let hex = new Array()
+        var b = 0
+        for (let i = 0; i < data.length; i++) {
+            if (i % 8 == 0 && i > 0) {
+                hex.push(b.toString(16).padStart(2, '0'))
+                b = 0
+            }
+            b <<= 1
+            b += parseInt(data[i])
+        }
+        hex.push(b.toString(16).padStart(2, '0'))
+        return hex.join('')
+    }
+
     /**
      * プライベートフィールド
      */
@@ -138,7 +153,7 @@
         }
     }
 
-    get data(){
+    get data() {
         return this.#src.data
     }
 
