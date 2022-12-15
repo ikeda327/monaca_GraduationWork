@@ -31,4 +31,17 @@ $(function () {
         $('.paint-icon').removeClass('selected2');
         $(this).addClass('selected2');
     });
+
+    $(".open").on('click', function () {
+        $(".popup").addClass('view');
+    });
+    $(".close").on('click', function () {
+        $(".popup").removeClass('view');
+    });
 })
+
+// function chgImg() {
+//     var png = canvas.toDataURL();
+
+//     document.getElementById("newImg").src = png;
+// }

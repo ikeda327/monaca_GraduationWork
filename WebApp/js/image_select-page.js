@@ -75,3 +75,9 @@ $(function () {
     })
 
 });
+
+function chgImg2() {
+    var png = dst.toDataURL();
+
+    document.getElementById("newImg2").src = png;
+}

@@ -259,7 +259,7 @@ datalist {
 
 .file,
 #reload_btn {
-    font-size: 12px;
+    font-size: 16px;
     line-height: 1.2;
     color: #444;
     background-color: #fff;
@@ -309,6 +309,48 @@ datalist {
 #dst {
     width: 300px;
     height: 300px;
+}
+
+/* ポップアップ */
+.popup {
+    width: 90%;
+    /* height: 0%; */
+    position: fixed;
+    left: 0;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, .5);
+    display: none;
+    align-items: center;
+    justify-content: center;
+}
+
+.popup.view {
+    display: flex;
+}
+
+.popup__inner {
+    display: inline-block;
+    background: #fff;
+    padding: 50px;
+    box-shadow: 0 0 5px rgba(0, 0, 0, .25);
+    position: relative;
+}
+
+.popup__title {
+    font-size: 20px;
+    margin-bottom: 10px;
+    font-weight: bold;
+    text-align: center;
+}
+
+.img-box {
+    border: 1px solid #555;
+}
+
+.close {
+    align-items: center;
 }
 
 /* アプリ説明ページ */

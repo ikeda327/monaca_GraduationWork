@@ -165,3 +165,9 @@ $(function () {
         });
     })
 })
+
+function chgImg1() {
+    var png = canvas.toDataURL();
+
+    document.getElementById("newImg1").src = png;
+}
