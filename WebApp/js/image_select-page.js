@@ -54,11 +54,11 @@ $(function () {
         canvasdata = canvasdata.split('')
         let data = getQrPosition(canvasdata)
 
-        // console.log(data.join('').match(/.{320}/g).join('\n'))
+        console.log(data.join('').match(/.{320}/g).join('\n'))
         // console.log(data)
 
         let send_data = ImageProc.toBinaryData(canvasdata, 16)
-        // console.log(send_data)
+        console.log(send_data)
 
         $.ajax({
             url: '/data',

@@ -20,8 +20,9 @@ $(function () {
     $('#canvas').attr('width', w);
     $('#canvas').attr('height', h);
 
-    //デフォルトのペン太さ
+    //デフォルト  ペン太さ・色
     let MY_BURASISIZE = 6;
+    context.strokeStyle = "#555";
 
     $('.paint-slider').on('input', function () {
         let val = $(this).val();
@@ -76,7 +77,7 @@ $(function () {
     // ペン
     $("#pen-button").on("click ", function () {
         context.globalCompositeOperation = 'source-over';
-        context.strokeStyle = "#000";
+        context.strokeStyle = "#555";
         // context.lineWidth = "5"
         context.lineWidth = MY_BURASISIZE;
     });
@@ -144,11 +145,11 @@ $(function () {
 
         // QR埋め込み済画像 配列で返ってくる
         let data = getQrPosition(canvasdata)
-        // console.log(data.join('').match(/.{320}/g).join('\n'))
+        console.log(data.join('').match(/.{320}/g).join('\n'))
 
         // １６進数に変換
         let send_data = ImageProc.toBinaryData(canvasdata, 16)
-        // console.log(send_data)
+        console.log(send_data)
 
         $.ajax({
             url: '/data',
