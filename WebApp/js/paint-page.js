@@ -162,12 +162,11 @@ $(function () {
             dataType: 'text',
             success: function (data) {},
             error: function (XMLHttpRequest, textStatus, errorThrown) {}
-        });
+        })
     })
 })
 
 function chgImg1() {
     var png = canvas.toDataURL();
-
     document.getElementById("newImg1").src = png;
 }

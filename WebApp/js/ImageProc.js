@@ -54,11 +54,11 @@ class ImageProc {
             //     b <<= 1
             //     b += result[i]
             // }
-            if (mode == 16) {
-                return hex.join('')
-            } else {
-                return '0x' + hex.join(',0x') + ','
-            }
+            // if (mode == 16) {
+            //     return hex.join('')
+            // } else {
+                // return '0x' + hex.join(',0x') + ','
+            // }
         }
     }
 

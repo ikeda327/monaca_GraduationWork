@@ -49,7 +49,7 @@ $(function () {
     });
 
     // 画像選択から送信
-    $("#select_finish").on("click", function (e) {
+    $("#select_finish").on("click", function () {
         let canvasdata = (ImageProc.toBinaryData(ip.data, 2))
         canvasdata = canvasdata.split('')
         let data = getQrPosition(canvasdata)
@@ -71,7 +71,7 @@ $(function () {
             dataType: 'text',
             success: function (data) {},
             error: function (XMLHttpRequest, textStatus, errorThrown) {}
-        });
+        })
     })
 });
 

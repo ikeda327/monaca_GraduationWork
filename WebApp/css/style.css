@@ -11,10 +11,8 @@ body {
 .body-wrapper {
     /* margin: 5px; */
     height: 110vh;
+    overflow: hidden;
     background-image: url(../images/backImg1.png);
-    /* background-image: url(../images/backImg2.png);
-    background-image: url(../images/backImg3.png);
-    background-image: url(../images/backImg4.png); */
     background-repeat: repeat-y;
     background-position: center center;
     background-size: 150%;
@@ -25,7 +23,8 @@ body {
     align-items: center;
     width: 100%;
     padding: 0;
-    margin: 0 0 1em;
+    /* margin: 0 0 1em; */
+    margin: 0;
 }
 
 #tab_menu li {
@@ -98,19 +97,25 @@ body {
 }
 
 /* ペイント */
+.sub-back {
+    width: 100%;
+    height: 100%;
+    background-color:rgba(255, 255, 255, 0.3);
+}
+
 .paint-page {
     /* overflow: hidden; */
     background-image: url(../images/pan_back.png);
-    background-size: 104%;
+    background-size: 102%;
     background-position-x: center;
-    background-position-y: 15%;
+    background-position-y: 23%;
     background-repeat: no-repeat;
-    /* opacity: .9; */
+    padding: 1em 0;
 }
 
 .paint-yajirusi {
     width: 90%;
-    margin: 0.3em auto;
+    margin: 0 auto;
     display: flex;
     justify-content: space-between;
 }
@@ -123,8 +128,8 @@ body {
 }
 
 .paint-yajirusi img {
-    width: 30px;
-    height: 30px;
+    width: 25px;
+    height: 25px;
 }
 
 .paint-canvas {
@@ -135,15 +140,6 @@ body {
     text-align: center;
 }
 
-/* .back-pan {
-    position: absolute;
-    width: 120%;
-    opacity: .5;
-    top: -7%;
-    left: -10%;
-    z-index: 1;
-} */
-
 .paint-canvas,
 .wrapper2 {
     position: relative;
@@ -151,8 +147,8 @@ body {
 
 .qr {
     position: absolute;
-    right: -2px;
-    bottom: -8px;
+    right: 0;
+    bottom: -2%;
     border: 1px solid #fff;
     /* display: none; */
 }
@@ -164,14 +160,14 @@ body {
 
 .btn {
     width: 70%;
-    margin: 4em auto 0 auto;
+    margin: 3.5em auto 0 auto;
     display: flex;
     justify-content: space-between;
 }
 
 .paint_btn {
     text-align: center;
-    padding: 10px;
+    padding: 7px;
     border: 3px solid #f7b45c;
     border-radius: 50%;
     background-color: #fff;
@@ -183,29 +179,22 @@ body {
 }
 
 .slide1 {
-    margin-top: 1em;
+    margin-top: 0.3em;
     text-align: center;
 }
 
 .paint-slider {
     width: 200px;
-    height: 16px;
 }
 
 datalist {
-    display: flex;
+    /* display: flex;
     flex-direction: column;
     justify-content: space-between;
-    writing-mode: vertical-lr;
+    writing-mode: vertical-lr; */
     width: 200px;
     margin: 0 auto;
-    font-size: 14px;
-}
-
-.label {
-    color: #fff;
-    font-size: 16px;
-    font-weight: 700;
+    /* font-size: 14px; */
 }
 
 .icon {
@@ -224,7 +213,7 @@ datalist {
 
 .finish_btn {
     width: 100%;
-    line-height: 3em;
+    line-height: 2.5em;
     font-size: 16px;
     font-weight: 700;
     background-color: #fff;
@@ -244,8 +233,8 @@ datalist {
     background-repeat: no-repeat;
     background-size: 103%;
     background-position-x: center;
-    background-position-y: 27%;
-    /* opacity: .9; */
+    background-position-y: 30%;
+    padding: 1em 0;
 }
 
 .wrapper {
