@@ -32,6 +32,7 @@ $(function () {
         $(this).addClass('selected2');
     });
 
+    // ポップアップ
     $(".open").on('click', function () {
         $(".popup").addClass('view');
     });

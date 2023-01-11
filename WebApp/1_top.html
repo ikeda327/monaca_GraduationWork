@@ -41,7 +41,7 @@
                 <button id="detail-btn" onclick=""><a href="2_detail.html">アプリの説明</a></button>
             </div>
         </div>
-        <div class="tab_panel">
+        <div class="tab_panel sub-back">
             <div class="paint-page">
                 <div class="paint-yajirusi">
                     <button id="backBtn" onclick=""><img src="./images/icon-backBtn.png" alt=""></button>
@@ -51,7 +51,7 @@
                 <div class="paint-canvas">
                     <!-- <img src="./images/pan_back.png" alt="" class="back-pan"> -->
                     <canvas id="canvas"></canvas>
-                    <div class="qr"></div>
+                    <div class="qr" id="qr_1"></div>
                 </div>
 
                 <div class="btn">
@@ -66,7 +66,7 @@
                     <input type="range" id="paint-input" class="paint-slider" min="1" max="10" step="1"
                         list="slide-list">
                     <datalist id="slide-list">
-                        <option value="1" label="細" class="label"></option>
+                        <option value="1"></option>
                         <option value="2"></option>
                         <option value="3"></option>
                         <option value="4"></option>
@@ -75,7 +75,7 @@
                         <option value="7"></option>
                         <option value="8"></option>
                         <option value="9"></option>
-                        <option value="10" label="太" class="label"></option>
+                        <option value="10"></option>
                     </datalist>
                 </div>
 
@@ -87,11 +87,14 @@
                     <div class="popup__inner">
                         <div class="popup__title">送信する画像を決定しますか？</div>
                         <div class="popup__body">
-                            <div class="img-box"><img id="newImg1"></div>
+                            <div class="img-box">
+                                <img id="newImg1">
+                                <div class="newQR"></div>
+                            </div>
                             <p>
-                                ※画像を保存する場合は長押ししてください<br>
-                                ※右下にQRコードが生成されます<br>
-                                ※送信後、ペイントした画像をクリアします
+                                ※保存する場合は画像を長押ししてください<br>
+                                <!-- ※右下にQRコードが生成されます<br> -->
+                                ※送信後、キャンバスをクリアします
                             </p>
                             <div>
                                 <button class="close">閉じる</button>
@@ -105,7 +108,7 @@
         </div>
 
 
-        <div class="tab_panel">
+        <div class="tab_panel sub-back">
             <div class="select-page">
                 <!-- 元画像 -->
                 <div class="wrapper">
@@ -119,7 +122,7 @@
                 <!-- 白黒画像 -->
                 <div class="wrapper2">
                     <canvas id="dst"></canvas>
-                    <div class="qr qr2"></div>
+                    <div class="qr qr2" id="qr_2"></div>
                 </div>
 
                 <!-- 調節スライドバー -->
@@ -137,10 +140,14 @@
                     <div class="popup__inner">
                         <div class="popup__title">送信する画像を決定しますか？</div>
                         <div class="popup__body">
-                            <div class="img-box"><img id="newImg2"></div>
+                            <div class="img-box">
+                                <img id="newImg2">
+                                <div class="newQR"></div>
+                            </div>
+
                             <p>
-                                ※画像を保存する場合は長押ししてください<br>
-                                ※右下にQRコードが生成されます<br>
+                                ※保存する場合は画像を長押ししてください<br>
+                                <!-- ※右下にQRコードが生成されます<br> -->
                                 ※送信後、選択した画像をリセットします
                             </p>
                             <div>

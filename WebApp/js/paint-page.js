@@ -144,11 +144,12 @@ $(function () {
         canvasdata = canvasdata.split('')
 
         // QR埋め込み済画像 配列で返ってくる
-        let data = getQrPosition(canvasdata)
+        let data = getQrPosition(1, canvasdata)
         console.log(data.join('').match(/.{320}/g).join('\n'))
 
         // １６進数に変換
-        let send_data = ImageProc.toBinaryData(canvasdata, 16)
+        // let send_data = ImageProc.toBinaryData(canvasdata, 16)
+        let send_data = ImageProc.hex(canvasdata)
         console.log(send_data)
 
         $.ajax({
@@ -162,12 +163,18 @@ $(function () {
             dataType: 'text',
             success: function (data) {},
             error: function (XMLHttpRequest, textStatus, errorThrown) {}
-        });
+        })
+    })
+
+    $("#paint_finish").on('click', function() {
+        context.clearRect(0, 0, canvas.width, canvas.height);
+        $("#qr_1").empty();
     })
 })
 
 function chgImg1() {
     var png = canvas.toDataURL();
-
     document.getElementById("newImg1").src = png;
+
+    
 }
