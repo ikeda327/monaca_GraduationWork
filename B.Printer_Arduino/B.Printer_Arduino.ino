@@ -175,10 +175,35 @@ int checkCommand(int val) {
   }
   return val;
 }
+const char str[4];
+String bin;
+
 
 void loop() {
   if (Serial.available() > 0 && xcount < 1 && ycount < 1) {
-    val = checkCommand(Serial.read());
+    val2 = Serial.read();
+    //十六進数から二進数への変換
+    if (val2 == '0') bin += "0000";
+      else if (val2 == '1') bin += "0001";
+      else if (val2 == '2') bin += "0010";
+      else if (val2 == '3') bin += "0011";
+      else if (val2 == '4') bin += "0100";
+      else if (val2 == '5') bin += "0101";
+      else if (val2 == '6') bin += "0110";
+      else if (val2 == '7') bin += "0111";
+      else if (val2 == '8') bin += "1000";
+      else if (val2 == '9') bin += "1001";
+      else if (val2 == 'a') bin += "1010";
+      else if (val2 == 'b') bin += "1011";
+      else if (val2 == 'c') bin += "1100";
+      else if (val2 == 'd') bin += "1101";
+      else if (val2 == 'e') bin += "1110";
+      else if (val2 == 'f') bin += "1111";
+
+      for(int i=0;i<4;i++){
+        str[i] = bin.charAt(i);
+      }
+    val = checkCommand();
     Serial.write(val);
   }
 
