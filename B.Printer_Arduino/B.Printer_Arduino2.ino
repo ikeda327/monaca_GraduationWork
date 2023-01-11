@@ -197,7 +197,8 @@ String bin;
 
 
 void loop() {
-  if (Serial.available() > 0 && xcount < 1 && ycount < 1) {
+
+  if (Serial.available() > 0) {
     val2 = Serial.read();
     //十六進数から二進数への変換
     if (val2 == '0') bin += "0000";
@@ -224,37 +225,47 @@ void loop() {
     Serial.write(val);
   }
 
-  if (val == '1' ) {
-    digitalWrite(13, HIGH);
-  } else {
-    digitalWrite(13, LOW);
+  for(int i =0; i<4;i++){
+    if (val == '1' ) {
+      digitalWrite(13, HIGH);
+    } else {
+      digitalWrite(13, LOW);
+    }
+
+    // x軸モーター
+    if (xwait == false) {
+      move(xdis,xdir);
+    }
+
+    if (digitalRead(2) == 1 && digitalRead(3) == 1 && digitalRead(4) == 1 && digitalRead(5) == 1) {
+      Serial.write('0');
+    } else if (digitalRead(2) == 0) {
+      Serial.write('11');
+    } else if (digitalRead(3) == 0) {
+      Serial.write('12');
+    } else if (digitalRead(4) == 0) {
+      Serial.write('13');
+    } else if (digitalRead(5) == 0) {
+      Serial.write('14');
+    }
+
+    // y軸モーター
+    if (ywait == false) {
+      move(ydis,ydir);
+    }
+
+    if (digitalRead(2) == 1 && digitalRead(3) == 1 && digitalRead(4) == 1 && digitalRead(5) == 1) {
+      Serial.write('0');
+    } else if (digitalRead(2) == 0) {
+      Serial.write('11');
+    } else if (digitalRead(3) == 0) {
+      Serial.write('12');
+    } else if (digitalRead(4) == 0) {
+      Serial.write('13');
+    } else if (digitalRead(5) == 0) {
+      Serial.write('14');
+    }
   }
-
-  // x軸モーター
-  if (xwait == false) {
-   
-  }
-  // y軸モーター
-  if (ywait == false) {
-    
-  }
-
-  if (digitalRead(2) == 1 && digitalRead(3) == 1 && digitalRead(4) == 1 && digitalRead(5) == 1) {
-    Serial.write('0');
-  } else if (digitalRead(2) == 0) {
-    Serial.write('11');
-  } else if (digitalRead(3) == 0) {
-    Serial.write('12');
-  } else if (digitalRead(4) == 0) {
-    Serial.write('13');
-  } else if (digitalRead(5) == 0) {
-    Serial.write('14');
-  }
-
-
-
-
-  //  delayMicroseconds(delay_time);
 }
 
 
