@@ -108,14 +108,14 @@ body {
     background-image: url(../images/pan_back.png);
     background-size: 102%;
     background-position-x: center;
-    background-position-y: 23%;
+    background-position-y: 20%;
     background-repeat: no-repeat;
     padding: 1em 0;
 }
 
 .paint-yajirusi {
     width: 90%;
-    margin: 0 auto;
+    margin: -0.5em auto 1.5em auto;
     display: flex;
     justify-content: space-between;
 }
@@ -128,8 +128,8 @@ body {
 }
 
 .paint-yajirusi img {
-    width: 25px;
-    height: 25px;
+    width: 2em;
+    height: 2em;
 }
 
 .paint-canvas {
@@ -150,7 +150,6 @@ body {
     right: 0;
     bottom: -2%;
     border: 1px solid #fff;
-    /* display: none; */
 }
 
 .qr2 {
@@ -160,7 +159,7 @@ body {
 
 .btn {
     width: 70%;
-    margin: 3.5em auto 0 auto;
+    margin: 4.5em auto 0 auto;
     display: flex;
     justify-content: space-between;
 }
@@ -335,7 +334,25 @@ datalist {
 }
 
 .img-box {
+    position: relative;
     border: 1px solid #555;
+}
+
+.newQR {
+    position: absolute;
+    right: 0.1em;
+    bottom: 0.3em;
+    border: 3px dashed #fff;
+    background-color: #e0e0e0;
+    width: 80px;
+    height: 80px;
+}
+
+.newQR:before {
+    content: "QRコード";
+    display: flex;
+    justify-content: center;
+    padding-top: 1.5em;
 }
 
 .close {

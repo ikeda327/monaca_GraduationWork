@@ -1,5 +1,6 @@
 $(function () {
     let ip
+    let context
     $('#myimage').on('change', async function (e) {
         // 選択した画像をプレビューに表示
         var reader = new FileReader();
@@ -16,6 +17,7 @@ $(function () {
             // console.log(_src);
             image.src = _src;
             let dst = document.getElementById("dst")
+            context = dst.getContext('2d')
             dst.width = 320
             dst.height = 320
             image.onload = () => {
@@ -52,7 +54,7 @@ $(function () {
     $("#select_finish").on("click", function () {
         let canvasdata = (ImageProc.toBinaryData(ip.data, 2))
         canvasdata = canvasdata.split('')
-        let data = getQrPosition(canvasdata)
+        let data = getQrPosition(2, canvasdata)
 
         console.log(data.join('').match(/.{320}/g).join('\n'))
         // console.log(data)
@@ -72,6 +74,11 @@ $(function () {
             success: function (data) {},
             error: function (XMLHttpRequest, textStatus, errorThrown) {}
         })
+    })
+
+    $("#select_finish").on('click', function () {
+        context.clearRect(0, 0, 320, 320)
+        $("#qr_2").empty();
     })
 });
 

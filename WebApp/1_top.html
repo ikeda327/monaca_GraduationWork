@@ -51,7 +51,7 @@
                 <div class="paint-canvas">
                     <!-- <img src="./images/pan_back.png" alt="" class="back-pan"> -->
                     <canvas id="canvas"></canvas>
-                    <div class="qr"></div>
+                    <div class="qr" id="qr_1"></div>
                 </div>
 
                 <div class="btn">
@@ -87,11 +87,14 @@
                     <div class="popup__inner">
                         <div class="popup__title">送信する画像を決定しますか？</div>
                         <div class="popup__body">
-                            <div class="img-box"><img id="newImg1"></div>
+                            <div class="img-box">
+                                <img id="newImg1">
+                                <div class="newQR"></div>
+                            </div>
                             <p>
-                                ※画像を保存する場合は長押ししてください<br>
-                                ※右下にQRコードが生成されます<br>
-                                ※送信後、ペイントした画像をクリアします
+                                ※保存する場合は画像を長押ししてください<br>
+                                <!-- ※右下にQRコードが生成されます<br> -->
+                                ※送信後、キャンバスをクリアします
                             </p>
                             <div>
                                 <button class="close">閉じる</button>
@@ -119,7 +122,7 @@
                 <!-- 白黒画像 -->
                 <div class="wrapper2">
                     <canvas id="dst"></canvas>
-                    <div class="qr qr2"></div>
+                    <div class="qr qr2" id="qr_2"></div>
                 </div>
 
                 <!-- 調節スライドバー -->
@@ -137,10 +140,14 @@
                     <div class="popup__inner">
                         <div class="popup__title">送信する画像を決定しますか？</div>
                         <div class="popup__body">
-                            <div class="img-box"><img id="newImg2"></div>
+                            <div class="img-box">
+                                <img id="newImg2">
+                                <div class="newQR"></div>
+                            </div>
+
                             <p>
-                                ※画像を保存する場合は長押ししてください<br>
-                                ※右下にQRコードが生成されます<br>
+                                ※保存する場合は画像を長押ししてください<br>
+                                <!-- ※右下にQRコードが生成されます<br> -->
                                 ※送信後、選択した画像をリセットします
                             </p>
                             <div>
