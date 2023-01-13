@@ -104,6 +104,8 @@ int ywait = true;
 int xdis;
 int ydis;
 
+int sw = true;
+
 int checkCommand(int val) {
   switch (val) {
     case '0':
@@ -195,37 +197,39 @@ int checkCommand(int val) {
 const char str[4];
 String bin;
 
-
 void loop() {
 
-  if (Serial.available() > 0) {
+    while(!Serial.available()){
+    }
+
     val2 = Serial.read();
+    Serial.println(val2);
+    bin = "";
     //十六進数から二進数への変換
     if (val2 == '0') bin += "0000";
-      else if (val2 == '1') bin += "0001";
-      else if (val2 == '2') bin += "0010";
-      else if (val2 == '3') bin += "0011";
-      else if (val2 == '4') bin += "0100";
-      else if (val2 == '5') bin += "0101";
-      else if (val2 == '6') bin += "0110";
-      else if (val2 == '7') bin += "0111";
-      else if (val2 == '8') bin += "1000";
-      else if (val2 == '9') bin += "1001";
-      else if (val2 == 'a') bin += "1010";
-      else if (val2 == 'b') bin += "1011";
-      else if (val2 == 'c') bin += "1100";
-      else if (val2 == 'd') bin += "1101";
-      else if (val2 == 'e') bin += "1110";
-      else if (val2 == 'f') bin += "1111";
-
+      else if (val2 == '1') bin = "0001";
+      else if (val2 == '2') bin = "0010";
+      else if (val2 == '3') bin = "0011";
+      else if (val2 == '4') bin = "0100";
+      else if (val2 == '5') bin = "0101";
+      else if (val2 == '6') bin = "0110";
+      else if (val2 == '7') bin = "0111";
+      else if (val2 == '8') bin = "1000";
+      else if (val2 == '9') bin = "1001";
+      else if (val2 == 'a') bin = "1010";
+      else if (val2 == 'b') bin = "1011";
+      else if (val2 == 'c') bin = "1100";
+      else if (val2 == 'd') bin = "1101";
+      else if (val2 == 'e') bin = "1110";
+      else if (val2 == 'f') bin = "1111";
+      else if (val2 == 'x') bin = "2";
+      else if (val2 == 'z') bin = "3";
       for(int i=0;i<4;i++){
         str[i] = bin.charAt(i);
       }
-    val = checkCommand();
-    Serial.write(val);
-  }
-
+  
   for(int i =0; i<4;i++){
+    val = checkCommand(str[i]);
     if (val == '1' ) {
       digitalWrite(13, HIGH);
     } else {
@@ -237,16 +241,25 @@ void loop() {
       move(xdis,xdir);
     }
 
+    //リミットスイッチの検出
     if (digitalRead(2) == 1 && digitalRead(3) == 1 && digitalRead(4) == 1 && digitalRead(5) == 1) {
-      Serial.write('0');
+      sw = true;
     } else if (digitalRead(2) == 0) {
       Serial.write('11');
+      sw = false;
+      break;
     } else if (digitalRead(3) == 0) {
       Serial.write('12');
+      sw = false;
+      break;
     } else if (digitalRead(4) == 0) {
       Serial.write('13');
+      sw = false;
+      break;
     } else if (digitalRead(5) == 0) {
       Serial.write('14');
+      sw = false;
+      break;
     }
 
     // y軸モーター
@@ -254,18 +267,29 @@ void loop() {
       move(ydis,ydir);
     }
 
-    if (digitalRead(2) == 1 && digitalRead(3) == 1 && digitalRead(4) == 1 && digitalRead(5) == 1) {
-      Serial.write('0');
+      //リミットスイッチの検出
+      if (digitalRead(2) == 1 && digitalRead(3) == 1 && digitalRead(4) == 1 && digitalRead(5) == 1) {
+      sw = true;
     } else if (digitalRead(2) == 0) {
       Serial.write('11');
+      sw = false;
+      break;
     } else if (digitalRead(3) == 0) {
       Serial.write('12');
+      sw = false;
+      break;
     } else if (digitalRead(4) == 0) {
       Serial.write('13');
+      sw = false;
+      break;
     } else if (digitalRead(5) == 0) {
       Serial.write('14');
+      sw = false;
+      break;
     }
   }
+  
+  if(i==3 && sw == true){
+    Serial.write('0');
+  }
 }
-
-
