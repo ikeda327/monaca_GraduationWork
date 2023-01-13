@@ -31,4 +31,12 @@ $(function () {
         $('.paint-icon').removeClass('selected2');
         $(this).addClass('selected2');
     });
+
+    // ポップアップ
+    $(".open").on('click', function () {
+        $(".popup").addClass('view');
+    });
+    $(".close").on('click', function () {
+        $(".popup").removeClass('view');
+    });
 })

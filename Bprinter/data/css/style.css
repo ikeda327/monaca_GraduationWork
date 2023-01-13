@@ -11,16 +11,11 @@ body {
 .body-wrapper {
     /* margin: 5px; */
     height: 110vh;
-    /* かわいいやつ */
-    /* background-image: url("https://pics.prcm.jp/01c070697f040/55797990/jpeg/55797990.jpeg"); */
-    /* 店の棚 */
-    /* background-image: url("https://www.photolibrary.jp/mhd7/img335/450-20140401134911221284.jpg"); */
-    /* シックなやつ */
-    /* background-image: url("https://thumb.ac-illust.com/5e/5e8f34d3f11c785f51c1d14df6915511_t.jpeg"); */
-    background-image: url(../images/sick.png);
-    background-repeat:repeat-y;
-    background-size: 100%;
-    /* opacity: .5; */
+    overflow: hidden;
+    background-image: url(../images/backImg1.png);
+    background-repeat: repeat-y;
+    background-position: center center;
+    background-size: 150%;
 }
 
 #tab_menu {
@@ -28,7 +23,8 @@ body {
     align-items: center;
     width: 100%;
     padding: 0;
-    margin: 0 0 1em;
+    /* margin: 0 0 1em; */
+    margin: 0;
 }
 
 #tab_menu li {
@@ -101,19 +97,25 @@ body {
 }
 
 /* ペイント */
+.sub-back {
+    width: 100%;
+    height: 100%;
+    background-color:rgba(255, 255, 255, 0.3);
+}
+
 .paint-page {
     /* overflow: hidden; */
     background-image: url(../images/pan_back.png);
-    background-size: 104%;
+    background-size: 102%;
     background-position-x: center;
-    background-position-y: 15%;
+    background-position-y: 20%;
     background-repeat: no-repeat;
-    /* opacity: .9; */
+    padding: 1em 0;
 }
 
 .paint-yajirusi {
     width: 90%;
-    margin: 0.3em auto;
+    margin: -0.5em auto 1.5em auto;
     display: flex;
     justify-content: space-between;
 }
@@ -126,8 +128,8 @@ body {
 }
 
 .paint-yajirusi img {
-    width: 30px;
-    height: 30px;
+    width: 2em;
+    height: 2em;
 }
 
 .paint-canvas {
@@ -138,78 +140,60 @@ body {
     text-align: center;
 }
 
-/* .back-pan {
-    position: absolute;
-    width: 120%;
-    opacity: .5;
-    top: -7%;
-    left: -10%;
-    z-index: 1;
-} */
-
 .paint-canvas,
 .wrapper2 {
     position: relative;
 }
 
-canvas {
-    border: 1px solid #444;
-}
-
 .qr {
     position: absolute;
-    right: 5px;
-    bottom: 2px;
+    right: 0;
+    bottom: -2%;
     border: 1px solid #fff;
-    display: none;
 }
 
 .qr2 {
-    right: 35px;
-    bottom: 2px;
+    right: 37px;
+    bottom: -5px;
 }
 
 .btn {
     width: 70%;
-    margin: 4em auto 0 auto;
+    margin: 4.5em auto 0 auto;
     display: flex;
     justify-content: space-between;
 }
 
 .paint_btn {
     text-align: center;
-    padding: 10px;
-    border: 2px solid #f7b45c;
+    padding: 7px;
+    border: 3px solid #f7b45c;
     border-radius: 50%;
     background-color: #fff;
 }
 
 .paint-icon.selected2 {
+    border: 3px solid #fff;
     background-color: #f7b45c;
 }
 
 .slide1 {
-    margin-top: 1em;
+    margin-top: 0.3em;
     text-align: center;
 }
 
 .paint-slider {
     width: 200px;
-    height: 16px;
 }
 
 datalist {
-    display: flex;
+    /* display: flex;
     flex-direction: column;
     justify-content: space-between;
-    writing-mode: vertical-lr;
+    writing-mode: vertical-lr; */
     width: 200px;
     margin: 0 auto;
-    font-size: 14px;
-}
-
-.label {
-    color: #ea9526;
+    /* font-size: 14px; */
 }
 
 .icon {
@@ -228,7 +212,7 @@ datalist {
 
 .finish_btn {
     width: 100%;
-    line-height: 3em;
+    line-height: 2.5em;
     font-size: 16px;
     font-weight: 700;
     background-color: #fff;
@@ -248,8 +232,8 @@ datalist {
     background-repeat: no-repeat;
     background-size: 103%;
     background-position-x: center;
-    background-position-y: 27%;
-    /* opacity: .9; */
+    background-position-y: 30%;
+    padding: 1em 0;
 }
 
 .wrapper {
@@ -263,7 +247,7 @@ datalist {
 
 .file,
 #reload_btn {
-    font-size: 12px;
+    font-size: 16px;
     line-height: 1.2;
     color: #444;
     background-color: #fff;
@@ -315,7 +299,65 @@ datalist {
     height: 300px;
 }
 
+/* ポップアップ */
+.popup {
+    width: 100%;
+    height: 100%;
+    position: fixed;
+    left: 0;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, .5);
+    display: none;
+    align-items: center;
+    justify-content: center;
+}
 
+.popup.view {
+    display: flex;
+}
+
+.popup__inner {
+    display: inline-block;
+    background: #fff;
+    padding: 1em;
+    box-shadow: 0 0 5px rgba(0, 0, 0, .25);
+    position: relative;
+}
+
+.popup__title {
+    font-size: 20px;
+    margin-bottom: 10px;
+    font-weight: bold;
+    text-align: center;
+}
+
+.img-box {
+    position: relative;
+    border: 1px solid #555;
+}
+
+.newQR {
+    position: absolute;
+    right: 0.1em;
+    bottom: 0.3em;
+    border: 3px dashed #fff;
+    background-color: #e0e0e0;
+    width: 80px;
+    height: 80px;
+}
+
+.newQR:before {
+    content: "QRコード";
+    display: flex;
+    justify-content: center;
+    padding-top: 1.5em;
+}
+
+.close {
+    align-items: center;
+}
 
 /* アプリ説明ページ */
 .detail-page {
