@@ -129,28 +129,28 @@ void setup() {
     request->send(SPIFFS, "/js/paint-page.js", "text/css");
   });
 
-  server.on("/images/erasser.png", HTTP_GET, [](AsyncWebServerRequest *request){
-    request->send(SPIFFS, "/images/erasser.png", "text/css");
+  server.on("/images/icon-erasser.png", HTTP_GET, [](AsyncWebServerRequest *request){
+    request->send(SPIFFS, "/images/icon-erasser.png", "text/css");
   });
 
-  server.on("/images/pen.png", HTTP_GET, [](AsyncWebServerRequest *request){
-    request->send(SPIFFS, "/images/pen.png", "text/css");
+  server.on("/images/icon-pen.png", HTTP_GET, [](AsyncWebServerRequest *request){
+    request->send(SPIFFS, "/images/icon-pen.png", "text/css");
   });
 
-    server.on("/images/backBtn.png", HTTP_GET, [](AsyncWebServerRequest *request){
-    request->send(SPIFFS, "/images/backBtn.png", "text/css");
+    server.on("/images/icon-backBtn.png", HTTP_GET, [](AsyncWebServerRequest *request){
+    request->send(SPIFFS, "/images/icon-backBtn.png", "text/css");
   });
 
     server.on("/images/pan_back.png", HTTP_GET, [](AsyncWebServerRequest *request){
     request->send(SPIFFS, "/images/pan_back.png", "text/css");
   });
 
-    server.on("/images/sick.png", HTTP_GET, [](AsyncWebServerRequest *request){
-    request->send(SPIFFS, "/images/sick.png", "text/css");
+    server.on("/images/backImg1.png", HTTP_GET, [](AsyncWebServerRequest *request){
+    request->send(SPIFFS, "/images/backImg1.png", "text/css");
   });
 
-    server.on("/images/forwardBtn.png", HTTP_GET, [](AsyncWebServerRequest *request){
-    request->send(SPIFFS, "/images/forwardBtn.png", "text/css");
+    server.on("/images/icon-forwardBtn.png", HTTP_GET, [](AsyncWebServerRequest *request){
+    request->send(SPIFFS, "/images/icon-forwardBtn.png", "text/css");
   });
   
   // サーバースタート
