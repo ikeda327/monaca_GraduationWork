@@ -1,5 +1,6 @@
 $(function () {
     let ip
+    let context
     $('#myimage').on('change', async function (e) {
         // 選択した画像をプレビューに表示
         var reader = new FileReader();
@@ -9,13 +10,14 @@ $(function () {
         }
         let src = reader.readAsDataURL(e.target.files[0]);
 
-        // 白黒化　
+        // 白黒化
         const image = new Image()
 
         function after_read(_src) {
             // console.log(_src);
             image.src = _src;
             let dst = document.getElementById("dst")
+            context = dst.getContext('2d')
             dst.width = 320
             dst.height = 320
             image.onload = () => {
@@ -50,11 +52,15 @@ $(function () {
 
     // 画像選択から送信
     $("#select_finish").on("click", function () {
-        // let qr = new  QRcode()
-        // qr.getPosition()        
+        let canvasdata = (ImageProc.toBinaryData(ip.data, 2))
+        canvasdata = canvasdata.split('')
+        let data = getQrPosition(2, canvasdata)
 
-        console.log(ImageProc.toBinaryData(ip.data, 2))
-        let send_data = ImageProc.toBinaryData(ip.data, 16)
+        console.log(data.join('').match(/.{320}/g).join('\n'))
+        // console.log(data)
+
+        let send_data = ImageProc.hex(canvasdata)
+        console.log(send_data)
 
         $.ajax({
             url: '/data',
@@ -67,7 +73,16 @@ $(function () {
             dataType: 'text',
             success: function (data) {},
             error: function (XMLHttpRequest, textStatus, errorThrown) {}
-        });
+        })
     })
 
+    $("#select_finish").on('click', function () {
+        context.clearRect(0, 0, 320, 320)
+        $("#qr_2").empty();
+    })
 });
+
+function chgImg2() {
+    var png = dst.toDataURL();
+    document.getElementById("newImg2").src = png;
+}
