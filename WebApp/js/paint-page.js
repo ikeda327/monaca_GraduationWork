@@ -164,17 +164,18 @@ $(function () {
             success: function (data) {},
             error: function (XMLHttpRequest, textStatus, errorThrown) {}
         })
-    })
 
-    $("#paint_finish").on('click', function() {
         context.clearRect(0, 0, canvas.width, canvas.height);
         $("#qr_1").empty();
     })
+
+    // $("#paint_finish").on('click', function() {
+    //     context.clearRect(0, 0, canvas.width, canvas.height);
+    //     $("#qr_1").empty();
+    // })
 })
 
 function chgImg1() {
     var png = canvas.toDataURL();
     document.getElementById("newImg1").src = png;
-
-    
 }

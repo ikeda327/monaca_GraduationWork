@@ -74,12 +74,15 @@ $(function () {
             success: function (data) {},
             error: function (XMLHttpRequest, textStatus, errorThrown) {}
         })
-    })
 
-    $("#select_finish").on('click', function () {
         context.clearRect(0, 0, 320, 320)
         $("#qr_2").empty();
     })
+
+    // $("#select_finish").on('click', function () {
+    //     context.clearRect(0, 0, 320, 320)
+    //     $("#qr_2").empty();
+    // })
 });
 
 function chgImg2() {

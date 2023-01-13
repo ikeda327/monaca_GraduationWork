@@ -39,4 +39,5 @@ $(function () {
     $(".close").on('click', function () {
         $(".popup").removeClass('view');
     });
+
 })
