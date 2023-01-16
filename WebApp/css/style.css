@@ -360,14 +360,33 @@ datalist {
 }
 
 .pop-btn {
-    position: relative;
     border: 2px solid #f99411;
     border-radius: 5px;
     background-color: #fff;
     font-size: 14px;
     padding: 7px 5px;
+}
+
+/* ボタン本体 */
+.pop-btn {
+    position: relative;
+    display: inline-block;
+    background-image: linear-gradient(135deg, #DD5E89, #F7BB97);
+    /* 背景のグラデーション */
+    border-radius: 30px;
+    /* 角丸をつける */
+    width: 200px;
+    /* 横幅 */
+    height: 60px;
+    /* 縦幅 */
+    line-height: 60px;
+    /* 行の高さ(heightと同じ値にする) */
+    text-decoration: none;
+    /* aタグのアンダーラインを消す */
     overflow: hidden;
     /* はみ出し部分を隠す */
+    cursor: pointer;
+    /* カーソルをポインターにする */
 }
 
 /* ボタンのテキスト */
@@ -392,21 +411,21 @@ datalist {
 }
 
 /* ボタンのテキスト(デフォルトのテキスト) */
-.submit-btn {
+.btn__text:nth-child(1) {
     top: 0;
 }
 
 /* ボタンのテキスト(隠れているテキスト) */
-.check-btn {
+.btn__text:nth-child(2) {
     top: -100%;
 }
 
 /* ボタンホバーアクション */
-.submit-btn:hover {
+.btn:hover .btn__text:nth-child(1) {
     top: 100%;
 }
 
-.check-btn:hover {
+.btn:hover .btn__text:nth-child(2) {
     top: 0;
 }
 
