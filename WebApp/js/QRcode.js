@@ -7,14 +7,14 @@ function getQrPosition(type, canvasdata) {
         $('#qr_1').qrcode({
             width: w,
             height: h,
-            text: "https://www.google.com"
+            text: "https://web.anabuki-college.net/"
         });
     } else if (type == 2) {
         // 画像選択ページ
         $('#qr_2').qrcode({
             width: w,
             height: h,
-            text: "https://www.google.com"
+            text: "https://web.anabuki-college.net/"
         });
     }
 

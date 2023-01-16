@@ -357,75 +357,60 @@ datalist {
 .pop-btn-div {
     display: flex;
     justify-content: space-around;
+    align-items: center;
 }
 
 .pop-btn {
     border: 2px solid #f99411;
     border-radius: 5px;
     background-color: #fff;
-    font-size: 14px;
-    padding: 7px 5px;
+    width: 7em;
+    height: 3em;
+    line-height: 3em;
+    text-align: center;
 }
 
-/* ボタン本体 */
-.pop-btn {
+.submit-btn {
+    width: 13em;
+    height: 4em;
+    line-height: 4em;
+    background-color: #f99411;
     position: relative;
-    display: inline-block;
-    background-image: linear-gradient(135deg, #DD5E89, #F7BB97);
-    /* 背景のグラデーション */
-    border-radius: 30px;
-    /* 角丸をつける */
-    width: 200px;
-    /* 横幅 */
-    height: 60px;
-    /* 縦幅 */
-    line-height: 60px;
-    /* 行の高さ(heightと同じ値にする) */
-    text-decoration: none;
-    /* aタグのアンダーラインを消す */
     overflow: hidden;
-    /* はみ出し部分を隠す */
-    cursor: pointer;
-    /* カーソルをポインターにする */
 }
 
-/* ボタンのテキスト */
+.close label {
+    display: block;
+    font-size: 14px;
+}
+
 .btn__text {
     position: absolute;
     left: 0;
     display: block;
     height: 100%;
-    /* 縦幅をボタンと同じにする */
     width: 100%;
-    /* 横幅をボタンと同じにする */
     color: #fff;
-    /* 文字色 */
-    font-size: 16px;
-    /* 文字サイズ */
+    font-size: 20px;
+    letter-spacing: .7em;
+    text-indent: .7em;
     font-weight: bold;
-    /* 文字の太さ */
-    text-align: center;
-    /* テキストを中央揃え */
     transition: all 0.3s;
-    /* アニメーション実行時間 */
 }
 
-/* ボタンのテキスト(デフォルトのテキスト) */
 .btn__text:nth-child(1) {
     top: 0;
 }
 
-/* ボタンのテキスト(隠れているテキスト) */
 .btn__text:nth-child(2) {
     top: -100%;
 }
 
-/* ボタンホバーアクション */
-.btn:hover .btn__text:nth-child(1) {
+.submit-btn:hover .btn__text:nth-child(1) {
     top: 100%;
 }
 
-.btn:hover .btn__text:nth-child(2) {
+.submit-btn:hover .btn__text:nth-child(2) {
     top: 0;
 }
 
@@ -437,6 +422,7 @@ datalist {
 }
 
 .sub-back2 {
+    height: 100vh;
     background-color: rgba(255, 255, 255, 0.39);
 }
 
