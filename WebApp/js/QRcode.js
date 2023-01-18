@@ -1,6 +1,6 @@
 function getQrPosition(type, canvasdata) {
-    let w = 80;
-    let h = 80;
+    let w = 60;
+    let h = 60;
 
     if (type == 1) {
         // ペイントページ

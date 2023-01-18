@@ -133,8 +133,8 @@ body {
 
 .paint-canvas {
     position: relative;
-    width: 320px;
-    height: 320px;
+    width: 200px;
+    height: 200px;
     margin: 1em auto 0 auto;
     text-align: center;
 }

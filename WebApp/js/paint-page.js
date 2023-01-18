@@ -144,8 +144,9 @@ $(function () {
         canvasdata = canvasdata.split('')
 
         // QR埋め込み済画像 配列で返ってくる
-        let data = getQrPosition(1, canvasdata)
-        console.log(data.join('').match(/.{320}/g).join('\n'))
+        // let data = getQrPosition(1, canvasdata)
+        // console.log(data.join('').match(/.{200}/g).join('\n'))
+        console.log(canvasdata.join('').match(/.{200}/g).join('\n'))
 
         // １６進数に変換
         // let send_data = ImageProc.toBinaryData(canvasdata, 16)
