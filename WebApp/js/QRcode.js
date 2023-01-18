@@ -1,20 +1,20 @@
 function getQrPosition(type, canvasdata) {
-    let w = 80;
-    let h = 80;
+    let w = 60;
+    let h = 60;
 
     if (type == 1) {
         // ペイントページ
         $('#qr_1').qrcode({
             width: w,
             height: h,
-            text: "https://www.google.com"
+            text: "https://web.anabuki-college.net/"
         });
     } else if (type == 2) {
         // 画像選択ページ
         $('#qr_2').qrcode({
             width: w,
             height: h,
-            text: "https://www.google.com"
+            text: "https://web.anabuki-college.net/"
         });
     }
 
