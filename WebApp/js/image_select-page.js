@@ -59,7 +59,7 @@ $(function () {
         console.log(data.join('').match(/.{200}/g).join('\n'))
         // console.log(data)
 
-        let send_data = ImageProc.hex(canvasdata)
+        let send_data = ImageProc.hex(data)
         console.log(send_data)
 
         $.ajax({

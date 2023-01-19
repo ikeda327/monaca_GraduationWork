@@ -148,12 +148,12 @@ $(function () {
 
         // QR埋め込み済画像 配列で返ってくる
         let data = getQrPosition(1, canvasdata)
-        // console.log(data.join('').match(/.{200}/g).join('\n'))
-        console.log(canvasdata.join('').match(/.{200}/g).join('\n'))
+        data = data.join('').match(/.{200}/g).join('\n')
+        console.log(data)
 
         // １６進数に変換
         // let send_data = ImageProc.toBinaryData(canvasdata, 16)
-        let send_data = ImageProc.hex(canvasdata)
+        let send_data = ImageProc.hex(data)
         console.log(send_data)
 
         $.ajax({
