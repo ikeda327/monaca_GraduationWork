@@ -10,7 +10,7 @@
 #define COMM_TX 26
 #define COMM_RX 25
 
-#define WIDTH (80)
+#define WIDTH (200)
 //#define HEIGHT(320)
 int x;//320ピクセル 0-319
 int y;//320ピクセル　0-319
@@ -20,7 +20,7 @@ SoftwareSerial sSerial;
 // wifi
 const char* ssid = "2F03G";
 const char* password = "SILKSUMMER";
- 
+
 //固定ip(学校)
 IPAddress ip(10, 10, 21 , 21);
 IPAddress gateway(10, 10, 40, 1);
@@ -71,29 +71,29 @@ void setup() {
   server.on("/data", HTTP_POST, [](AsyncWebServerRequest * request) {
     hex = request->arg("send_data");
     Serial.println(hex);
+
+    //////////     2進数への変換(文字列)
+    for (int i = 0; i < hex.length(); i++) {
+      if (hex[i] == '0') bin += "0000";
+      else if (hex[i] == '1') bin += "0001";
+      else if (hex[i] == '2') bin += "0010";
+      else if (hex[i] == '3') bin += "0011";
+      else if (hex[i] == '4') bin += "0100";
+      else if (hex[i] == '5') bin += "0101";
+      else if (hex[i] == '6') bin += "0110";
+      else if (hex[i] == '7') bin += "0111";
+      else if (hex[i] == '8') bin += "1000";
+      else if (hex[i] == '9') bin += "1001";
+      else if (hex[i] == 'a') bin += "1010";
+      else if (hex[i] == 'b') bin += "1011";
+      else if (hex[i] == 'c') bin += "1100";
+      else if (hex[i] == 'd') bin += "1101";
+      else if (hex[i] == 'e') bin += "1110";
+      else if (hex[i] == 'f') bin += "1111";
+    }
+    //2進数表記の表示
+    Serial.println(bin);
   });
-  //   2進数への変換(文字列)
-  //     for(int i=0; i<hex.length(); i++){
-  //         if (hex[i] == '0') bin += "0000";
-  //         else if (hex[i] == '1') bin += "0001";
-  //         else if (hex[i] == '2') bin += "0010";
-  //         else if (hex[i] == '3') bin += "0011";
-  //         else if (hex[i] == '4') bin += "0100";
-  //         else if (hex[i] == '5') bin += "0101";
-  //         else if (hex[i] == '6') bin += "0110";
-  //         else if (hex[i] == '7') bin += "0111";
-  //         else if (hex[i] == '8') bin += "1000";
-  //         else if (hex[i] == '9') bin += "1001";
-  //         else if (hex[i] == 'a') bin += "1010";
-  //         else if (hex[i] == 'b') bin += "1011";
-  //         else if (hex[i] == 'c') bin += "1100";
-  //         else if (hex[i] == 'd') bin += "1101";
-  //         else if (hex[i] == 'e') bin += "1110";
-  //         else if (hex[i] == 'f') bin += "1111";
-  //    }
-  //        //2進数表記の表示
-  //        Serial.println("完了");
-  // });
 
   // トップページにアクセス
   server.on("/", HTTP_GET, [](AsyncWebServerRequest * request) {
@@ -176,43 +176,52 @@ void doPrint() {
     //縦軸が端までいかない
     if (y < WIDTH) {
       ++y;
-      pix = 10;
+      pix = '2';
+      //      sSerial.write(2);
       //縦横ともに端までいったら
     } else {
       y = 0;
-      pix = 11;
+      pix = '3';
+      //      sSerial.write(3);
       is_print = false;
     }
   } else {
     //横も縦も端にいっていない間
-    pix = hex.charAt(y * WIDTH + x);
+    pix = bin.charAt(y * WIDTH + x);
+    //    sSerial.write(pix);
     x++;
   }
   sSerial.write(pix);
   Serial.println(pix);
- 
+
   //unoからのデータを待つ
   wait = true;
 }
 
+int cnt = 0;
+
 void loop() {
-  if (wait) {
-    Serial.println("wait");
-    if (sSerial.available()) { //待ちの状態でコールバックがあり正常以外ならば縦横初期値にして、プリンターを止める
-      char r = sSerial.read();
-      if (r != '0') {
-        is_print = false;
-        x = 0;
-        y = 0;
-      } else {
-      }
-      wait = false;
+  //  if (wait) {
+  //    Serial.println("wait");
+  if (sSerial.available()) { //待ちの状態でコールバックがあり正常以外ならば縦横初期値にして、プリンターを止める
+    char r = sSerial.read();
+    Serial.print("call:");
+    Serial.println(r);
+    if (r != '0') {
+      is_print = false;
+      x = 0;
+      y = 0;
+    } else {
     }
+    wait = false;
   }
+  //  }
   //プリンターが動いている状態かつ待ち状態ではないならば焼きメソッドを呼ぶ
   if (is_print && !wait) {
+    Serial.println(cnt);
     Serial.println("doPrint");
     doPrint();
+    cnt++;
   }
   //M5の状態をチェックする
   M5.update();
@@ -233,8 +242,12 @@ void loop() {
       is_print = false;
       wait = true;
       x = y = 0;
-      sSerial.write(11);
+      sSerial.write(3);
     } else {
     }
+  }
+
+  if (Serial.available()) {
+    sSerial.write(Serial.read());
   }
 }

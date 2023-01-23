@@ -18,8 +18,8 @@ $(function () {
             image.src = _src;
             let dst = document.getElementById("dst")
             context = dst.getContext('2d')
-            dst.width = 320
-            dst.height = 320
+            dst.width = 200
+            dst.height = 200
             image.onload = () => {
                 ip = new ImageProc(dst, image)
                 let element = document.getElementById('input');
@@ -54,9 +54,9 @@ $(function () {
     $("#select_finish").on("click", function () {
         let canvasdata = (ImageProc.toBinaryData(ip.data, 2))
         canvasdata = canvasdata.split('')
-        let data = getQrPosition(2, canvasdata)
+        // let data = getQrPosition(2, canvasdata)
 
-        console.log(data.join('').match(/.{320}/g).join('\n'))
+        console.log(canvasdata.join('').match(/.{200}/g).join('\n'))
         // console.log(data)
 
         let send_data = ImageProc.hex(canvasdata)
@@ -74,12 +74,15 @@ $(function () {
             success: function (data) {},
             error: function (XMLHttpRequest, textStatus, errorThrown) {}
         })
-    })
 
-    $("#select_finish").on('click', function () {
-        context.clearRect(0, 0, 320, 320)
+        context.clearRect(0, 0, 200, 200)
         $("#qr_2").empty();
     })
+
+    // $("#select_finish").on('click', function () {
+    //     context.clearRect(0, 0, 320, 320)
+    //     $("#qr_2").empty();
+    // })
 });
 
 function chgImg2() {
