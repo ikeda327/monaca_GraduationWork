@@ -29,9 +29,9 @@ function getQrPosition(type, canvasdata) {
     // console.log(qrdata)
 
 
-    for (let qy = 0; qy < 80; qy++) {
-        for (let qx = 0; qx < 80; qx++) {
-            canvasdata[(320 * (240 + qy)) + (240 + qx)] = qrdata[80 * qy + qx]
+    for (let qy = 0; qy < 60; qy++) {
+        for (let qx = 0; qx < 60; qx++) {
+            canvasdata[(200 * (140 + qy)) + (140 + qx)] = qrdata[60 * qy + qx]
         }
     }
     return canvasdata
