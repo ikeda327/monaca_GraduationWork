@@ -54,12 +54,13 @@ $(function () {
     $("#select_finish").on("click", function () {
         let canvasdata = (ImageProc.toBinaryData(ip.data, 2))
         canvasdata = canvasdata.split('')
-        let data = getQrPosition(2, canvasdata)
+        // let data = getQrPosition(2, canvasdata)
 
-        console.log(data.join('').match(/.{200}/g).join('\n'))
-        // console.log(data)
+        console.log(canvasdata.join('').match(/.{200}/g).join('\n'))
+        // console.log(data.join('').match(/.{200}/g).join('\n'))
 
-        let send_data = ImageProc.hex(data)
+        let send_data = ImageProc.hex(canvasdata)
+        // let send_data = ImageProc.hex(data)
         console.log(send_data)
 
         $.ajax({

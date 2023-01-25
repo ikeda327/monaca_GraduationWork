@@ -6,6 +6,7 @@
 
 #define FAST_DELAY (350)
 #define SLOW_DELAY (1000)
+//#define SLOW_DELAY (FAST_DELAY)
 
 const int DIR = 7;
 const int STEP = 6;
@@ -71,7 +72,7 @@ void fastsemove(int count, int fastsedir) {
 }
 
 void setup() {
-  Serial.begin(9600);
+  Serial.begin(2400);
   pinMode(13, OUTPUT);
 
   pinMode(DIR, OUTPUT);
@@ -95,7 +96,8 @@ int ydir = CW;
 int ycount = 0;
 
 long delay_time = SLOW_DELAY;
-int one_pixcel = 25;
+//int one_pixcel = 25;
+int one_pixcel = 8;
 
 int xwait = true;
 int ywait = true;
@@ -287,7 +289,7 @@ int return_one_pixcel = 5;
 //  Serial.println(swdval);
 
 //    if (swlval == 1 && swrval == 1 && swuval == 1 && swdval == 1) {
-//  ////    Serial.write('0');
+//    Serial.write('0');
 //    } else if (swlval == 0) {
 //      Serial.write('11');
 //    } else if (swrval == 0) {
@@ -317,29 +319,3 @@ int return_one_pixcel = 5;
 
   delayMicroseconds(delay_time);
 }
-
-
-
-
-//  if (val == '1' ) {
-//    digitalWrite(13, HIGH);
-//    move(15, CCW);
-//  } else if (val == '0') {
-//    digitalWrite(13, LOW);
-//    move(15, CCW);
-//  } else if (val == '2') {
-//    digitalWrite(13, LOW);
-//    fastmove(15 * 320, CW);
-//    semove(50 * 9, CCW);
-//    Serial.write('10');
-//  } else if (val == '3') {
-//    digitalWrite(13, LOW);
-//    fastmove(15 * 320, CW);
-//    semove(50 * 9, CW);
-//  } else if (val == '8') {
-//    semove(50, CW);
-//  } else if (val == '9') {
-//    semove(50, CCW);
-//  }
-//  //      Serial.write(val);
-//}
