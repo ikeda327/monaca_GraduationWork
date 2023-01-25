@@ -34,8 +34,9 @@ $(function () {
                 let val = $(this).val();
                 $('.value').html(val);
                 var input_val = Number.parseInt(val);
+                console.log(input_val)
                 ip.threshold = input_val;
-                send_data = ip.convert();
+                ip.convert();
             });
             // 自動ボタン
             $('#reload_btn').on('click', function () {
@@ -52,15 +53,16 @@ $(function () {
 
     // 画像選択から送信
     $("#select_finish").on("click", function () {
-        let canvasdata = (ImageProc.toBinaryData(ip.data, 2))
-        canvasdata = canvasdata.split('')
-        // let data = getQrPosition(2, canvasdata)
+        let canvasdata = (ImageProc.toBinaryData(ip.cdata, 2))
+        let aa = canvasdata.split('')
+        // console.log("canvas : ", canvasdata)
+        // console.log("aa", aa)
+        let data = getQrPosition(2, aa)
 
-        console.log(canvasdata.join('').match(/.{200}/g).join('\n'))
-        // console.log(data.join('').match(/.{200}/g).join('\n'))
+        console.log(data.join('').match(/.{200}/g).join('\n'))
+        // console.log(data)
 
-        let send_data = ImageProc.hex(canvasdata)
-        // let send_data = ImageProc.hex(data)
+        let send_data = ImageProc.hex(data)
         console.log(send_data)
 
         $.ajax({
@@ -79,11 +81,6 @@ $(function () {
         context.clearRect(0, 0, 200, 200)
         $("#qr_2").empty();
     })
-
-    // $("#select_finish").on('click', function () {
-    //     context.clearRect(0, 0, 320, 320)
-    //     $("#qr_2").empty();
-    // })
 });
 
 function chgImg2() {
