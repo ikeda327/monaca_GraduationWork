@@ -46,7 +46,7 @@ int wait = false;
 void setup() {
 
   Serial.begin(115200);
-  sSerial.begin(9600, SWSERIAL_8N1, COMM_RX, COMM_TX, false);
+  sSerial.begin(2400, SWSERIAL_8N1, COMM_RX, COMM_TX, false);
   m5.begin();
   WiFi.config(ip, gateway, subnet);
 
