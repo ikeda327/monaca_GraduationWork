@@ -46,7 +46,7 @@ int wait = false;
 void setup() {
 
   Serial.begin(115200);
-  sSerial.begin(2400, SWSERIAL_8N1, COMM_RX, COMM_TX, false);
+  sSerial.begin(9600, SWSERIAL_8N1, COMM_RX, COMM_TX, false);
   m5.begin();
   WiFi.config(ip, gateway, subnet);
 
@@ -167,6 +167,8 @@ void setup() {
   M5.Lcd.qrcode("http://10.10.21.21/", 10, 10, 120, 6);
 }
 
+int isecho = -1;
+
 //焼くメソッド
 void doPrint() {
   int pix;
@@ -192,6 +194,7 @@ void doPrint() {
     x++;
   }
   sSerial.write(pix);
+  isecho = 0;
   Serial.println(pix);
 
   //unoからのデータを待つ
@@ -203,7 +206,13 @@ int cnt = 0;
 void loop() {
   //  if (wait) {
   //    Serial.println("wait");
-  if (sSerial.available()) { //待ちの状態でコールバックがあり正常以外ならば縦横初期値にして、プリンターを止める
+  if (sSerial.available()){ //待ちの状態でコールバックがあり正常以外ならば縦横初期値にして、プリンターを止める
+    if(isecho == 0){
+      Serial.print("echo:");
+      Serial.println(sSerial.read());
+      isecho = -1;
+      return;
+    }
     char r = sSerial.read();
     Serial.print("call:");
     Serial.println(r);
