@@ -157,6 +157,10 @@ class ImageProc {
         return this.#src.data
     }
 
+    get cdata() {
+        return this.#dst.data
+    }
+
     /**
      * カラー画像を表示する
      */
