@@ -4,8 +4,8 @@
 #define WIDTH (200)
 #define HEIGHT (200)
 
-#define FAST_DELAY (350)
-#define SLOW_DELAY (1000)
+#define FAST_DELAY (500)
+#define SLOW_DELAY (800)
 //#define SLOW_DELAY (FAST_DELAY)
 
 const int DIR = 7;
@@ -72,7 +72,7 @@ void fastsemove(int count, int fastsedir) {
 }
 
 void setup() {
-  Serial.begin(2400);
+  Serial.begin(38400);
   pinMode(13, OUTPUT);
 
   pinMode(DIR, OUTPUT);
@@ -97,7 +97,7 @@ int ycount = 0;
 
 long delay_time = SLOW_DELAY;
 //int one_pixcel = 25;
-int one_pixcel = 8;
+int one_pixcel = 5;
 
 int xwait = true;
 int ywait = true;
@@ -126,7 +126,7 @@ int checkCommand(int val) {
       ywait = true;
       digitalWrite(DIR, CW);
       digitalWrite(seDIR, CCW);
-      //      delay_time = FAST_DELAY;
+      // delay_time = FAST_DELAY;
       xcount = one_pixcel * WIDTH;
       ycount = one_pixcel;
       break;
@@ -193,11 +193,13 @@ void loop() {
 
   if (Serial.available() > 0 && xcount < 1 && ycount < 1) {
     val = checkCommand(Serial.read());
-    //Serial.write(val);
+    Serial.write(val);
   }
 
   if (val == '1') {
     digitalWrite(13, HIGH);
+    //delayMicroseconds(5000);
+    //delay(40);
   } else {
     digitalWrite(13, LOW);
   }
@@ -249,72 +251,47 @@ void loop() {
   }
 
 
-  //  if (digitalRead(2) == 1 && digitalRead(3) == 1 && digitalRead(4) == 1 && digitalRead(5) == 1) {
-  //      sw = true;
-  //    } else if (digitalRead(2) == 0) {
-  //      Serial.write('11');
-  //      sw = false;
-  //      break;
-  //    } else if (digitalRead(3) == 0) {
-  //      Serial.write('12');
-  //      sw = false;
-  //      break;
-  //    } else if (digitalRead(4) == 0) {
-  //      Serial.write('13');
-  //      sw = false;
-  //      break;
-  //    } else if (digitalRead(5) == 0) {
-  //      Serial.write('14');
-  //      sw = false;
-  //      break;
-  //    }
-  //  }
-  //
-  //  if (l == 3 && sw == true) {
+
+
+  int swuval = digitalRead(2);
+  int swrval = digitalRead(3);
+  int swlval = digitalRead(4);
+  int swdval = digitalRead(5);
+
+  int return_one_pixcel = 5;
+
+  //  Serial.println(swuval);
+  //  Serial.println(swrval);
+  //  Serial.println(swlval);
+  //  Serial.println(swdval);
+
+  //    if (swlval == 1 && swrval == 1 && swuval == 1 && swdval == 1) {
   //    Serial.write('0');
-  //  }
-  //}
+  //    } else if (swlval == 0) {
+  //      Serial.write('11');
+  //    } else if (swrval == 0) {
+  //      Serial.write('12');
+  //    } else if (swuval == 0) {
+  //      Serial.write('13');
+  //    } else if (swdval == 0) {
+  //      Serial.write('14');
+  //    }
 
-
-int swuval = digitalRead(2);
-int swrval = digitalRead(3);
-int swlval = digitalRead(4);
-int swdval = digitalRead(5);
-
-int return_one_pixcel = 5;
-
-//  Serial.println(swuval);
-//  Serial.println(swrval);
-//  Serial.println(swlval);
-//  Serial.println(swdval);
-
-//    if (swlval == 1 && swrval == 1 && swuval == 1 && swdval == 1) {
-//    Serial.write('0');
-//    } else if (swlval == 0) {
-//      Serial.write('11');
-//    } else if (swrval == 0) {
-//      Serial.write('12');
-//    } else if (swuval == 0) {
-//      Serial.write('13');
-//    } else if (swdval == 0) {
-//      Serial.write('14');
-//    }
-
-//    if (swuval == 0) {
-//        ydir = CW;
-//        ycount = return_one_pixcel * HEIGHT;
-//    } else if (swrval == 0) {
-//        xdir = CCW;
-//        xcount = return_one_pixcel * WIDTH;
-//    } else if (swlval == 0) {
-//        xdir = CCW;
-//        xcount = return_one_pixcel * WIDTH;
-//    } else if (swdval == 0) {
-//        ydir = CW;
-//        ycount = return_one_pixcel * HEIGHT;
-//    } else {
-//        
-//    }
+  //    if (swuval == 0) {
+  //        ydir = CW;
+  //        ycount = return_one_pixcel * HEIGHT;
+  //    } else if (swrval == 0) {
+  //        xdir = CCW;
+  //        xcount = return_one_pixcel * WIDTH;
+  //    } else if (swlval == 0) {
+  //        xdir = CCW;
+  //        xcount = return_one_pixcel * WIDTH;
+  //    } else if (swdval == 0) {
+  //        ydir = CW;
+  //        ycount = return_one_pixcel * HEIGHT;
+  //    } else {
+  //
+  //    }
 
 
   delayMicroseconds(delay_time);
